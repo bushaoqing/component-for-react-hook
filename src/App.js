@@ -1,8 +1,10 @@
+import Buttom from './components/Button'
 
+// 测试容器
 function App() {
   return (
     <div className="App">
-      初始化项目
+      <Buttom text="aaa" type="submit" />
     </div>
   );
 }
