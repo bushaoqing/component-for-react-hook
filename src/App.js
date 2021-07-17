@@ -3,13 +3,14 @@ import CopyText from './components/CopyText'
 
 // 测试容器
 function App() {
+  let tip = '我就是你要得复制内容'
   return (
     <div className="App">
       <Buttom text="aaa" type="submit" />
 
       <hr />
 
-      我就是你要得复制内容<CopyText copyText="我就是你要得复制内容" />
+      {tip}<CopyText copyText={tip} />
     </div>
   );
 }
