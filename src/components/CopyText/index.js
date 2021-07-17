@@ -37,7 +37,9 @@ function CopyText(props) {
 
 function copyToClipboard(value) {
   const input = document.createElement('input')
-  input.style.display= 'none'
+  input.style.position = 'fixed'
+  input.style.top = '-99999px'
+  input.style.left = '-99999px'
   input.value = value
   document.body.append(input)
   input.select()
