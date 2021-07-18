@@ -1,17 +1,31 @@
-import Buttom from './components/Button'
-import CopyText from './components/CopyText'
+import { Switch, Route, Link } from 'react-router-dom'
+import { RouteMap } from './router'
 
 // 测试容器
 function App() {
-  let tip = '我就是你要得复制内容'
+
   return (
-    <div className="App">
-      <Buttom text="aaa" type="submit" />
+    <>
+      <ol className='side_menu_wrap'>
+        {
+          RouteMap.map(item => (
+            <li key={item.path}>
+              <Link to={item.path}>{item.name}</Link>
+            </li>
+          ))
+        }
+      </ol>
 
-      <hr />
-
-      {tip}<CopyText copyText={tip} />
-    </div>
+      <div className="main_body_wrap">
+        <Switch>
+          {
+            RouteMap.map(item => (
+              <Route key={item.path} path={item.path} component={item.component}></Route>
+            ))
+          }
+        </Switch>
+      </div>
+    </>
   );
 }
 
