@@ -52,4 +52,8 @@ CopyText.propTypes = {
   isShowTip: PropTypes.bool
 }
 
+CopyText.defaultProps = {
+  copyText: '我是测试文本'
+}
+
 export default CopyText

@@ -7,9 +7,15 @@ function InitPage() {
 
   return (
     <div className="App">
-      {/* <Buttom text="aaa" type="submit" /> */}
+      <Buttom text="aaa" type="submit"  />
+
+      <br/><hr/><br/>
 
       {time}<CopyText copyText={time} />
+
+      <br/><hr/><br/>
+
+      
     </div>
   );
 }

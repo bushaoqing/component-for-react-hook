@@ -29,7 +29,8 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
-  text: '我是测试文本',
+  text: '我是测试按钮',
+  type: 'text',
   onClick: _.noop
 }
 
