@@ -1,5 +1,6 @@
 import Buttom from '../components/Button'
 import CopyText from '../components/CopyText'
+import Input from '../components/Input'
 
 // 测试容器
 function InitPage() {
@@ -15,7 +16,7 @@ function InitPage() {
 
       <br/><hr/><br/>
 
-      
+      <Input value="123" placeholder="in" onChange={val => console.log('输入框值改变：', val)} />
     </div>
   );
 }

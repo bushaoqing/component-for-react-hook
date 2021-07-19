@@ -1,0 +1,12 @@
+.comp-input__div-wrap {
+  display: flex;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 0 40px 0 10px;
+}
+
+.comp-input__input-wrap {
+  border: none;
+  outline: none;
+}
