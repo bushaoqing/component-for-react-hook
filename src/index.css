@@ -3,8 +3,14 @@
   margin: 0;
 }
 
+hr {
+  border-color: pink;
+  border-style: dashed;
+  margin: 20px 0;
+}
+
 .App {
-  width: 600px;
+  width: 800px;
   min-height: 600px;
   border: 1px solid pink;
 }
