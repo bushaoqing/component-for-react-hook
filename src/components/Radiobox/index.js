@@ -21,6 +21,7 @@ function Radiobox(props) {
               onClick={() => {
                 if (isDisabled) return
                 setCurVal(item.value)
+                props.onChange(item.value)
               }}
             >{ item.text }</span>
           )
@@ -33,13 +34,15 @@ function Radiobox(props) {
 Radiobox.propTypes = {
   value: PropTypes.string,
   options: PropTypes.array,
-  disabled: PropTypes.array
+  disabled: PropTypes.array,
+  onChange: PropTypes.func
 }
 
 Radiobox.defaultProps = {
   value: '',
   options: [],
-  disabled: []
+  disabled: [],
+  onChange: _.noop
 }
 
 export default Radiobox

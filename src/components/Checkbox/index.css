@@ -1,0 +1,62 @@
+.comp-checkbox__single-span {
+  display: inline-block;
+  height: 40px;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  margin-right: 8px;
+  user-select: none;
+}
+
+.comp-checkbox__single-span:hover {
+  cursor: pointer;
+}
+
+.comp-checkbox__single-span.disabled {
+  color: #999;
+}
+
+.comp-checkbox__single-span.disabled:hover,
+.comp-checkbox__single-span.current.disabled:hover {
+  cursor: not-allowed;
+}
+
+.comp-checkbox__single-span ~ .comp-checkbox__single-span {
+  margin-left: -1px;
+}
+
+.comp-checkbox__single-span__text {
+  position: relative;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 1px solid #999;
+  margin-right: 4px;
+}
+
+/* √ 号 */
+.comp-checkbox__single-span__text::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 8px;
+  position: absolute;
+  top: 5px;
+  left: 1px;
+  border: 2px solid #fff;
+  border-top: 0;
+  border-left: 0;
+  -webkit-transform: rotate(45deg) scale(1) translate(-50%, -50%);
+  -ms-transform: rotate(45deg) scale(1) translate(-50%, -50%);
+  transform: rotate(45deg) scale(1) translate(-50%, -50%);
+  background: transparent;
+}
+
+.comp-checkbox__single-span.current .comp-checkbox__single-span__text {
+  background: #0052D9;
+  border-color: #0052D9;
+}
+
+.comp-checkbox__single-span.current.disabled .comp-checkbox__single-span__text {
+  background: #d4e3fc;
+  border-color: #d4e3fc;
+}

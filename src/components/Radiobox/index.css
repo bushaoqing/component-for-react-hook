@@ -4,6 +4,7 @@
   box-sizing: border-box;
   padding: 10px 20px;
   border: 1px solid #ddd;
+  user-select: none;
 }
 
 .comp-radiobox__single-span:hover {
