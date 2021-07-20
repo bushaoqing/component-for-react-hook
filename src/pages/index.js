@@ -4,6 +4,7 @@ import CopyText from '../components/CopyText'
 import Input from '../components/Input'
 import Textarea from '../components/Textarea'
 import Switch from '../components/Switch'
+import Radiobox from '../components/Radiobox'
 
 // 测试容器
 function InitPage() {
@@ -45,6 +46,18 @@ function InitPage() {
 
       <Switch value={switchVal} onChange={bool => setSwitchVal(bool)}/>{switchVal}
       <Switch value={switchVal1} onChange={bool => setSwitchVal1(bool)}/>{switchVal1 ? 'true' : 'fasle'}
+
+      <hr/>
+
+      <Radiobox
+        value=""
+        disabled={['A']}
+        options={[
+          {id: 1, text: '我是A', value: 'A'},
+          {id: 2, text: '我是B', value: 'B'},
+          {id: 3, text: '我是C', value: 'C'},
+        ]}
+      />
     </div>
   );
 }

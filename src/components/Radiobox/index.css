@@ -1,0 +1,35 @@
+.comp-radiobox__single-span {
+  display: inline-block;
+  height: 40px;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+}
+
+.comp-radiobox__single-span:hover {
+  cursor: pointer;
+  background: #eee;
+}
+
+.comp-radiobox__single-span.current.disabled {
+  background: #d4e3fc;
+  color: #fff;
+}
+.comp-radiobox__single-span.disabled {
+  background: #eee;
+  color: #999;
+}
+
+.comp-radiobox__single-span.disabled:hover,
+.comp-radiobox__single-span.current.disabled:hover {
+  cursor: not-allowed;
+}
+
+.comp-radiobox__single-span.current {
+  background: #0052d9;
+  color: #fff;
+}
+
+.comp-radiobox__single-span ~ .comp-radiobox__single-span {
+  margin-left: -1px;
+}

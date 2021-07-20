@@ -9,8 +9,9 @@ function Swith(props) {
 
   return (
     <div
-      className={`comp-switch__wrap ${isOpen ? 'open' : 'close'}`}
+      className={`comp-switch__wrap ${isOpen ? 'open' : 'close'} ${props.disabled ? 'disabled' : ''}`}
       onClick={() => {
+        if (props.disabled) return
         props.onChange(valIsBool ? Boolean(!isOpen) : Number(!isOpen))
         setIsOpen(val => valIsBool ? Boolean(!val) : Number(!val))
       }}
@@ -20,11 +21,13 @@ function Swith(props) {
 
 Swith.propTypes = {
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]), // 0 or 1\ true or false
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  disabled: PropTypes.bool
 }
 
 Swith.defaultProps = {
   value: false,
+  disabled: false,
   onChange: _.noop
 }
 

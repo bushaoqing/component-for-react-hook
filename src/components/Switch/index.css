@@ -8,6 +8,18 @@
   background: #c5c5c5;
 }
 
+.comp-switch__wrap:hover {
+  cursor: pointer;
+}
+
+.comp-switch__wrap.disabled {
+  background: #eee;
+}
+
+.comp-switch__wrap.disabled:hover {
+  cursor: not-allowed;
+}
+
 .comp-switch__wrap::before {
   content: '';
   display: inline-block;
@@ -22,6 +34,10 @@
 
 .comp-switch__wrap.open {
   background: #0052d9;
+}
+
+.comp-switch__wrap.open.disabled {
+  background: #d4e3fc;
 }
 
 .comp-switch__wrap.close::before {
