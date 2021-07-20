@@ -6,6 +6,7 @@ import './index.css'
 function Input(props) {
   const [inputValue, setInputValue] = useState(props.value)
   const [showClearIcon, setShowClearIcon] = useState(false)
+  const [isFocus, setFocus] = useState(false)
 
   function handleChange (e) {
     let val = e.target.value
@@ -14,27 +15,34 @@ function Input(props) {
     props.onChange(val)
   }
 
-  function handleClearInput() {}
+  function handleClearInput() {
+    setInputValue('')
+    props.onChange('')
+  }
 
   return (
     <div
-      className="comp-input__div-wrap"
+      className={`comp-input__div-wrap ${isFocus ? 'focus' : ''} ${props.error.isError ? 'error' : ''}`}
       style={{ width: props.width, height: props.height }}
       onMouseEnter={() => setShowClearIcon(true)}
       onMouseLeave={() => setShowClearIcon(false)}
     >
       <input
-        // ref={inputRef}
         className='comp-input__input-wrap'
         value={inputValue}
         type={props.type}
         disabled={props.disabled}
         placeholder={props.placeholder}
         style={{ width: '100%', height: '100%' }}
-        // onKeyDown={e => this.handleKeyDown(e)}
         onChange={e => handleChange(e)}
-        // onFocus={() => this.setState({ isOnFocus: true })}
-        // onBlur={e => this.handleBlur(e)}
+        onFocus={() => {
+          setFocus(true)
+          props.onFocus()
+        }}
+        onBlur={() => {
+          setFocus(false)
+          props.onBlur()
+        }}
       />
       {
         !props.disabled && props.clearable && showClearIcon && !!inputValue && 
@@ -53,6 +61,7 @@ Input.propTypes = {
   value: PropTypes.string,
   type: PropTypes.string,
   disabled: PropTypes.bool,
+  clearable: PropTypes.bool,
   placeholder: PropTypes.string,
   error: PropTypes.object
 }
@@ -62,12 +71,15 @@ Input.defaultProps = {
   height: '40px',
   value: '',
   disabled: false,
+  clearable: true,
   placeholder: '',
   error: {
     isError: false,
     msg: ''
   },
-  onChange: _.noop
+  onChange: _.noop,
+  onFocus: _.noop,
+  onBlur: _.noop,
 }
 
 export default Input

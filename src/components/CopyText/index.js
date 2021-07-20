@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import USERIMG from './img/icon_copy@2x.png'
+import USERIMG from '../img/copy@2x.png'
 import './index.css'
 
 function CopyText(props) {

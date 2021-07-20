@@ -1,12 +1,47 @@
 .comp-input__div-wrap {
+  position: relative;
   display: flex;
   border: 1px solid #ddd;
-  border-radius: 4px;
   box-sizing: border-box;
-  padding: 0 40px 0 10px;
+}
+
+.comp-input__div-wrap.focus {
+  border-color: blue;
+}
+
+.comp-input__div-wrap.error {
+  border-color: red;
 }
 
 .comp-input__input-wrap {
   border: none;
   outline: none;
+  padding: 0 40px 0 10px;
+}
+
+.comp-input__input-wrap:disabled {
+  cursor: not-allowed;
+  color: #999;
+}
+
+.comp-input-clearable {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url('../img/clear_cycle@2x.png') no-repeat;
+  background-size: cover;
+}
+
+.comp-input-clearable:hover {
+  cursor: pointer;
+}
+
+.comp-input-error__tip {
+  position: absolute;
+  bottom: -18px;
+  font-size: 13px;
+  color: red;
 }
