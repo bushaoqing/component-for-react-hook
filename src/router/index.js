@@ -2,6 +2,7 @@ import page from '../pages'
 import Button from "../components/Button"
 import CopyText from "../components/CopyText"
 import Input from "../components/Input"
+import Textarea from "../components/Textarea"
 
 // 侧边菜单栏
 const RouteMap = [
@@ -21,6 +22,10 @@ const RouteMap = [
         name: '输入框组件',
         path: '/Input',
         component: Input
+    }, {
+        name: '文本输入框组件',
+        path: '/Textarea',
+        component: Textarea
     }
 ]
 

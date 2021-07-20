@@ -1,0 +1,47 @@
+.comp-textarea__div-wrap {
+  position: relative;
+  display: flex;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+.comp-textarea__div-wrap.focus {
+  border-color: blue;
+}
+
+.comp-textarea__div-wrap.error {
+  border-color: red;
+}
+
+.comp-textarea__input-wrap {
+  border: none;
+  outline: none;
+  padding: 10px 40px 10px 10px;
+}
+
+.comp-textarea__input-wrap:disabled {
+  cursor: not-allowed;
+  color: #999;
+}
+
+.comp-textarea-clearable {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url('../img/clear_cycle@2x.png') no-repeat;
+  background-size: cover;
+}
+
+.comp-textarea-clearable:hover {
+  cursor: pointer;
+}
+
+.comp-textarea-error__tip {
+  position: absolute;
+  bottom: -18px;
+  font-size: 13px;
+  color: red;
+}

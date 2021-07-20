@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Buttom from '../components/Button'
 import CopyText from '../components/CopyText'
 import Input from '../components/Input'
+import Textarea from '../components/Textarea'
 
 // 测试容器
 function InitPage() {
@@ -20,6 +21,16 @@ function InitPage() {
       <br/><hr/><br/>
 
       <Input 
+        value={inputVal} 
+        placeholder="in" 
+        onChange={val => setInputVal(val)} 
+        onBlur={() => console.log('curVal: ', inputVal)}
+        // error={{isError: true, msg: '我是错误提示信息'}}
+      />
+
+      <br/><hr/><br/>
+
+      <Textarea
         value={inputVal} 
         placeholder="in" 
         onChange={val => setInputVal(val)} 
