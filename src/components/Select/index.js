@@ -3,14 +3,14 @@ import PropTypes from 'prop-types'
 import _ from 'lodash'
 import './index.css'
 
-let isClickFilter = false
-
 function Select(props) {
   const [inputValue, setInputValue] = useState(() => {
     let { value, options, config } = props
-    let initArr = options.filter(i => i[config.value] === value)
+    if (!props.isMultiple) value = [value] // 单选变为多选的处理方式
+
+    let initArr = options.filter(i => value.includes(i[config.value]))
     let initVal = initArr[0] && initArr[0][config.text] || ''
-    return initVal
+    return [initVal]
   })
   const [showClearIcon, setShowClearIcon] = useState(false)
   const [isFocus, setFocus] = useState(false)
@@ -30,11 +30,7 @@ function Select(props) {
   }, [showOptions])
 
   function onDocumentClick() {
-    if (!isClickFilter) {
-      setShowOptions(false)
-    } else {
-      isClickFilter = false
-    }
+    setShowOptions(false)
   }
 
   function handleFilter(e) {
@@ -45,8 +41,42 @@ function Select(props) {
     setCurOptions(curOptions)
   }
 
+  function hanldeClickOption(item) {
+
+    // 多选
+    if (props.isMultiple) {
+
+      let { value, text } = props.config
+      let clickText = item[text]
+      // let clickVal = item[value]
+      let index = inputValue.findIndex(i => i === clickText)
+      let cloneInputVal = _.cloneDeep(inputValue)
+
+      if (index !== -1) {
+        cloneInputVal.splice(index, 1)
+      } else {
+        cloneInputVal.push(clickText)
+      }
+
+      setInputValue(cloneInputVal)
+
+      // 通过多选过滤出对应的obj、value数组
+      let curArr = props.options.filter(i => cloneInputVal.includes(i[text]))
+      let curVal = curArr.map(i => i[value])
+      props.onChange(curVal, curArr)
+    } else { 
+      
+      // 单选
+      let { value, text } = props.config
+      setInputValue([item[text]])
+      props.onChange(item[value], item)
+      setShowOptions(false)
+    }
+
+  }
+
   function handleClearInput() {
-    setInputValue('')
+    setInputValue([])
     props.onChange('')
   }
 
@@ -56,6 +86,7 @@ function Select(props) {
       style={{ width: props.width, height: props.height }}
       onMouseEnter={() => setShowClearIcon(true)}
       onMouseLeave={() => setShowClearIcon(false)}
+      onClick={e => e.stopPropagation()} // 点击本体不冒泡
     >
       <input
         className='comp-select__input-wrap'
@@ -95,9 +126,6 @@ function Select(props) {
               <input
                 className='comp-select-options__filter-input'
                 placeholder={props.filterPlaceholder}
-                onClick={() => {
-                  isClickFilter = true
-                }}
                 onChange={e => handleFilter(e)}
               />
             }
@@ -109,11 +137,8 @@ function Select(props) {
                   return (
                     <div 
                       key={item[value]}
-                      className={`comp-select-options__option ${inputValue === item[text] ? 'current' : ''}`}
-                      onClick={() => {
-                        setInputValue(item[text])
-                        props.onChange(item[value], item)
-                      }}
+                      className={`comp-select-options__option ${inputValue.includes(item[text]) ? 'current' : ''}`}
+                      onClick={() => hanldeClickOption(item)}
                     >{ item[text] }</div>
                   )
                 }) :
@@ -129,7 +154,7 @@ function Select(props) {
 Select.propTypes = {
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]), // 单选：string；多选：array
   options: PropTypes.array,
   type: PropTypes.string,
   disabled: PropTypes.bool,
@@ -138,13 +163,14 @@ Select.propTypes = {
   error: PropTypes.object,
   config: PropTypes.object,
   isFilter: PropTypes.bool,
-  filterPlaceholder: PropTypes.string
+  filterPlaceholder: PropTypes.string,
+  isMultiple: PropTypes.bool, // 是否多选
 }
 
 Select.defaultProps = {
   width: '100%',
   height: '40px',
-  value: '',
+  value: null,
   filterPlaceholder: '请输入',
   config: { // 配置映射关键字，默认是value、text
     value: 'value',
@@ -152,6 +178,7 @@ Select.defaultProps = {
   },
   options: [],
   disabled: false,
+  isMultiple: false,
   isFilter: false,
   clearable: true,
   placeholder: '',

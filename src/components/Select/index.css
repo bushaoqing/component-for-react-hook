@@ -41,7 +41,7 @@
 
 .comp-select-error__tip {
   position: absolute;
-  bottom: 18px;
+  bottom: -18px;
   font-size: 13px;
   color: red;
 }
@@ -53,6 +53,7 @@
   border: 1px solid #ddd;
   width: 100%;
   background: #fff;
+  z-index: 9;
 }
 
 .comp-select-options__option {

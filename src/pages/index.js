@@ -15,7 +15,8 @@ function InitPage() {
   const [switchVal1, setSwitchVal1] = useState(true)
   const [radioboxVal, setRadioboxVal] = useState('A')
   const [checkboxVal, setCheckboxVal] = useState(['A'])
-  const [selectVal, setSelectVal] = useState('A')
+  const [selectVal, setSelectVal] = useState('C')
+  const [selectVal1, setSelectVal1] = useState(['C'])
   
   
   let time = new Date().toLocaleTimeString()
@@ -88,7 +89,7 @@ function InitPage() {
 
       <hr/>
 
-      <div className="app_title">下拉框组件展示：</div>
+      <div className="app_title">下拉单选框组件展示：</div>
       <Select 
         value={selectVal} 
         isFilter // true：可以模糊搜索
@@ -106,6 +107,33 @@ function InitPage() {
         placeholder="请选择" 
         onChange={(val, item) => {
           setSelectVal(val)
+          console.log('value: ', val, '  item: ', item)
+        }} 
+        // onBlur={() => console.log('onBlur Select curVal: ', selectVal)}
+        // error={{isError: true, msg: '我是错误提示信息'}}
+      />
+      
+      <hr/>
+
+      <div className="app_title">下拉多选框组件展示：</div>
+      <Select 
+        value={selectVal1} 
+        isFilter // true：可以模糊搜索
+        isMultiple // true：可以多选
+        options={[
+          {id: 'A', name: 'AAA'},
+          {id: 'B', name: 'BBB'},
+          {id: 'C', name: 'CCC'},
+          {id: 'D', name: 'DDD'},
+          {id: 'E', name: 'EEE'}
+        ]}
+        config={{ // 配置映射关键字，默认是value、text
+          value: 'id',
+          text: 'name'
+        }}
+        placeholder="请选择" 
+        onChange={(val, item) => {
+          setSelectVal1(val)
           console.log('value: ', val, '  item: ', item)
         }} 
         // onBlur={() => console.log('onBlur Select curVal: ', selectVal)}
