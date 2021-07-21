@@ -6,6 +6,7 @@ import Textarea from '../components/Textarea'
 import Switch from '../components/Switch'
 import Radiobox from '../components/Radiobox'
 import Checkbox from '../components/Checkbox'
+import Select from '../components/Select'
 
 // 测试容器
 function InitPage() {
@@ -14,6 +15,7 @@ function InitPage() {
   const [switchVal1, setSwitchVal1] = useState(true)
   const [radioboxVal, setRadioboxVal] = useState('A')
   const [checkboxVal, setCheckboxVal] = useState(['A'])
+  const [selectVal, setSelectVal] = useState('A')
   
   
   let time = new Date().toLocaleTimeString()
@@ -34,7 +36,7 @@ function InitPage() {
         value={inputVal} 
         placeholder="in" 
         onChange={val => setInputVal(val)} 
-        onBlur={() => console.log('curVal: ', inputVal)}
+        // onBlur={() => console.log('Input curVal: ', inputVal)}
         // error={{isError: true, msg: '我是错误提示信息'}}
       />
 
@@ -45,7 +47,7 @@ function InitPage() {
         value={inputVal} 
         placeholder="in" 
         onChange={val => setInputVal(val)} 
-        onBlur={() => console.log('curVal: ', inputVal)}
+        // onBlur={() => console.log('Textarea curVal: ', inputVal)}
         // error={{isError: true, msg: '我是错误提示信息'}}
       />
 
@@ -82,6 +84,32 @@ function InitPage() {
           {id: 4, text: '我是D', value: 'D'},
         ]}
         onChange={val => setCheckboxVal(val)}
+      />
+
+      <hr/>
+
+      <div className="app_title">下拉框组件展示：</div>
+      <Select 
+        value={selectVal} 
+        isFilter // true：可以模糊搜索
+        options={[
+          {id: 'A', name: 'AAA'},
+          {id: 'B', name: 'BBB'},
+          {id: 'C', name: 'CCC'},
+          {id: 'D', name: 'DDD'},
+          {id: 'E', name: 'EEE'}
+        ]}
+        config={{ // 配置映射关键字，默认是value、text
+          value: 'id',
+          text: 'name'
+        }}
+        placeholder="请选择" 
+        onChange={(val, item) => {
+          setSelectVal(val)
+          console.log('value: ', val, '  item: ', item)
+        }} 
+        // onBlur={() => console.log('onBlur Select curVal: ', selectVal)}
+        // error={{isError: true, msg: '我是错误提示信息'}}
       />
     </div>
   );

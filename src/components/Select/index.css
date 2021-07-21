@@ -1,0 +1,84 @@
+.comp-select__div-wrap {
+  position: relative;
+  display: flex;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+.comp-select__div-wrap.focus {
+  border-color: blue;
+}
+
+.comp-select__div-wrap.error {
+  border-color: red;
+}
+
+.comp-select__input-wrap {
+  border: none;
+  outline: none;
+  padding: 0 40px 0 10px;
+}
+
+.comp-select__input-wrap:disabled {
+  cursor: not-allowed;
+  color: #999;
+}
+
+.comp-select-clearable {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url('../img/clear_cycle@2x.png') no-repeat;
+  background-size: cover;
+}
+
+.comp-select-clearable:hover {
+  cursor: pointer;
+}
+
+.comp-select-error__tip {
+  position: absolute;
+  bottom: 18px;
+  font-size: 13px;
+  color: red;
+}
+
+.comp-select-options__wrap {
+  position: absolute;
+  top: 39px;
+  left: -1px;
+  border: 1px solid #ddd;
+  width: 100%;
+  background: #fff;
+}
+
+.comp-select-options__option {
+  padding: 4px;
+  margin-top: 1px;
+}
+
+.comp-select-options__option.current {
+  background: #ecf2fe;
+  color: blue;
+}
+
+.comp-select-options__option.no__options,
+.comp-select-options__option.no__options:hover {
+  background: #fff;
+}
+
+.comp-select-options__option:hover {
+  background: #eee;
+}
+
+.comp-select-options__filter-input {
+  width: 100%;
+  height: 38px;
+  box-sizing: border-box;
+  outline: none;
+  border: 1px solid #eee;
+  padding: 0 8px;
+}

@@ -5,6 +5,7 @@ import Input from "../components/Input"
 import Textarea from "../components/Textarea"
 import Switch from "../components/Switch"
 import Radiobox from "../components/Radiobox"
+import Select from "../components/Select"
 
 // 侧边菜单栏
 const RouteMap = [
@@ -36,6 +37,10 @@ const RouteMap = [
         name: '单选按钮组件',
         path: '/Radiobox',
         component: Radiobox
+    }, {
+        name: '下拉框选择组件',
+        path: '/Select',
+        component: Select
     }
 ]
 
