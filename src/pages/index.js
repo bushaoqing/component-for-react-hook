@@ -93,6 +93,11 @@ function InitPage() {
       <Select 
         value={selectVal} 
         isFilter // true：可以模糊搜索
+        disabledObj={{ // 备选项的禁用
+          arr: ['C', 'D'],
+          key: 'id',
+          tip: '我是禁用提示'
+        }}
         options={[
           {id: 'A', name: 'AAA'},
           {id: 'B', name: 'BBB'},
@@ -120,6 +125,12 @@ function InitPage() {
         value={selectVal1} 
         isFilter // true：可以模糊搜索
         isMultiple // true：可以多选
+        // disabled // true：下拉框禁用
+        disabledObj={{ // 备选项的禁用
+          arr: ['A', 'B'],
+          key: 'id',
+          tip: '我是禁用提示'
+        }}
         options={[
           {id: 'A', name: 'AAA'},
           {id: 'B', name: 'BBB'},

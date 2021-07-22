@@ -133,10 +133,20 @@ function Select(props) {
               curOptions.length > 0 ?
                 curOptions.map(item => {
                   let { value, text } = props.config
+                  let { arr, key, tip } = props.disabledObj
+
+                  let isDisabled = arr.some(i => i === item[key])
 
                   return (
+                    isDisabled ?
+                    <div 
+                      className='comp-select-options__option__disabled'
+                      key={item[value]} 
+                      title={tip || item[text]}
+                    >{ item[text] }</div> :
                     <div 
                       key={item[value]}
+                      title={item[text]}
                       className={`comp-select-options__option ${inputValue.includes(item[text]) ? 'current' : ''}`}
                       onClick={() => hanldeClickOption(item)}
                     >{ item[text] }</div>
@@ -165,6 +175,7 @@ Select.propTypes = {
   isFilter: PropTypes.bool,
   filterPlaceholder: PropTypes.string,
   isMultiple: PropTypes.bool, // 是否多选
+  disabledObj: PropTypes.object
 }
 
 Select.defaultProps = {
@@ -185,6 +196,11 @@ Select.defaultProps = {
   error: {
     isError: false,
     msg: ''
+  },
+  disabledObj: {
+    arr: [], // 禁用数组
+    key: '', // 与data备选项中的哪个字段比较
+    tip: '', // 禁用提示语
   },
   onChange: _.noop,
   onFocus: _.noop,

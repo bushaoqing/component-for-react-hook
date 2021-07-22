@@ -61,6 +61,12 @@
   margin-top: 1px;
 }
 
+.comp-select-options__option__disabled {
+  padding: 4px;
+  margin-top: 1px;
+  color: #999;
+}
+
 .comp-select-options__option.current {
   background: #ecf2fe;
   color: blue;
