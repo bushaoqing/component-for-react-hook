@@ -5,12 +5,14 @@ import Input from "../components/Input"
 import Textarea from "../components/Textarea"
 import Switch from "../components/Switch"
 import Radiobox from "../components/Radiobox"
+import Checkbox from "../components/Checkbox"
 import Select from "../components/Select"
+import Cascader from "../components/Cascader"
 
 // 侧边菜单栏
 const RouteMap = [
     {
-        name: 'page',
+        name: '组件展示案例',
         path: '/page',
         component: page
     }, {
@@ -38,9 +40,17 @@ const RouteMap = [
         path: '/Radiobox',
         component: Radiobox
     }, {
+        name: '多选按钮组件',
+        path: '/Checkbox',
+        component: Checkbox
+    }, {
         name: '下拉框选择组件',
         path: '/Select',
         component: Select
+    }, {
+        name: '级联选择组件',
+        path: '/Cascader',
+        component: Cascader
     }
 ]
 

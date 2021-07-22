@@ -1,0 +1,103 @@
+.comp-cascader__div-wrap {
+  position: relative;
+  display: flex;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+.comp-cascader__div-wrap.focus {
+  border-color: blue;
+}
+
+.comp-cascader__div-wrap.error {
+  border-color: red;
+}
+
+.comp-cascader__input-wrap {
+  border: none;
+  outline: none;
+  padding: 0 40px 0 10px;
+}
+
+.comp-cascader__input-wrap:disabled {
+  cursor: not-allowed;
+  color: #999;
+}
+
+.comp-cascader-clearable {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url('../img/clear_cycle@2x.png') no-repeat;
+  background-size: cover;
+}
+
+.comp-cascader-clearable:hover {
+  cursor: pointer;
+}
+
+.comp-cascader-error__tip {
+  position: absolute;
+  bottom: -18px;
+  font-size: 13px;
+  color: red;
+}
+
+.comp-cascader-options__wrap {
+  position: absolute;
+  top: 39px;
+  left: -1px;
+  border: 1px solid #ddd;
+  width: 100%;
+  background: #fff;
+  z-index: 9;
+}
+
+.comp-cascader-options__option-wrap-div {
+  display: flex;
+}
+
+.comp-cascader-options__option-wrap-box {
+  display: inline-block;
+}
+
+.comp-cascader-options__option-wrap-box ~ .comp-cascader-options__option-wrap-box {
+  border-left: 1px solid #eee;
+}
+
+.comp-cascader-options__filter-input {
+  width: 100%;
+  height: 38px;
+  box-sizing: border-box;
+  outline: none;
+  border: 1px solid #eee;
+  padding: 0 8px;
+}
+
+.comp-cascader-options__option {
+  padding: 4px;
+  margin-top: 1px;
+}
+
+.comp-cascader-options__option__disabled {
+  padding: 4px;
+  margin-top: 1px;
+  color: #999;
+}
+
+.comp-cascader-options__option.current {
+  background: #ecf2fe;
+  color: blue;
+}
+
+.comp-cascader-options__option.no__options,
+.comp-cascader-options__option.no__options:hover {
+  background: #fff;
+}
+
+.comp-cascader-options__option:hover {
+  background: #eee;
+}
