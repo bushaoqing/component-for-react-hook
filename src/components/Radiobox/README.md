@@ -2,12 +2,13 @@
 
 <!-- 
 <Radiobox
-  value="我是C"
-  disabled={['我是A', '我是B']}
+  value={'A'}
+  disabled={['A']}
   options={[
-    {id: 1, text: 'A', value: '我是A'},
-    {id: 2, text: 'B', value: '我是B'},
-    {id: 3, text: 'C', value: '我是C'},
+    {id: 1, text: '我是A', value: 'A'},
+    {id: 2, text: '我是B', value: 'B'},
+    {id: 3, text: '我是C', value: 'C'},
   ]}
+  onChange={val => setRadioboxVal(val)}
 />
  -->

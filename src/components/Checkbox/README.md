@@ -2,7 +2,7 @@
 
 <!-- 
 <Checkbox
-  value={checkboxVal}
+  value={['A']}
   disabled={['A']}
   options={[
     {id: 1, text: '我是A', value: 'A'},

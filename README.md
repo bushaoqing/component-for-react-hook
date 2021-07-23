@@ -50,13 +50,14 @@ let time = new Date().toLocaleTimeString()
 ### 6、单选案例图片
 ```javascript
 <Radiobox
-  value="我是C"
-  disabled={['我是A', '我是B']}
+  value={'A'}
+  disabled={['A']}
   options={[
-    {id: 1, text: 'A', value: '我是A'},
-    {id: 2, text: 'B', value: '我是B'},
-    {id: 3, text: 'C', value: '我是C'},
+    {id: 1, text: '我是A', value: 'A'},
+    {id: 2, text: '我是B', value: 'B'},
+    {id: 3, text: '我是C', value: 'C'},
   ]}
+  onChange={val => setRadioboxVal(val)}
 />
 ```
 ![Image 这是单选案例图片](https://github.com/bushaoqing/react-components-with-hooks/blob/main/readmeImg/radio.png)
@@ -64,7 +65,7 @@ let time = new Date().toLocaleTimeString()
 ### 7、多选案例图片
 ```javascript
 <Checkbox
-  value={checkboxVal}
+  value={['A']}
   disabled={['A']}
   options={[
     {id: 1, text: '我是A', value: 'A'},
@@ -82,6 +83,11 @@ let time = new Date().toLocaleTimeString()
 <Select 
   value={selectVal} 
   isFilter // true：可以模糊搜索
+  disabledObj={{ // 备选项的禁用
+    arr: ['C', 'D'],
+    key: 'id',
+    tip: '我是禁用提示'
+  }}
   options={[
     {id: 'A', name: 'AAA'},
     {id: 'B', name: 'BBB'},
@@ -110,6 +116,12 @@ let time = new Date().toLocaleTimeString()
   value={selectVal1} 
   isFilter // true：可以模糊搜索
   isMultiple // true：可以多选
+  // disabled // true：下拉框禁用
+  disabledObj={{ // 备选项的禁用
+    arr: ['A', 'B'],
+    key: 'id',
+    tip: '我是禁用提示'
+  }}
   options={[
     {id: 'A', name: 'AAA'},
     {id: 'B', name: 'BBB'},
