@@ -9,6 +9,7 @@ import Checkbox from '../components/Checkbox'
 import Select from '../components/Select'
 import Cascader from '../components/Cascader'
 import Dialog from '../components/Dialog'
+import Drawer from '../components/Drawer'
 
 // 测试容器
 function InitPage() {
@@ -23,6 +24,7 @@ function InitPage() {
     ids: ["B", "B1", "B1-1"]
   })
   const [visible, setVisible] = useState(false)
+  const [drawerVisible, setDrawerVisible] = useState(false)
   
   
   let time = new Date().toLocaleTimeString()
@@ -240,6 +242,22 @@ function InitPage() {
         >
           <div>我是插入弹窗的div啊</div>
         </Dialog>
+      }
+
+      <hr/>
+
+      <div className="app_title">抽屉组件展示：</div>
+      <Buttom type='submit' text='点我查看抽屉组件' onClick={() => setDrawerVisible(true)} />
+      {
+        drawerVisible &&
+        <Drawer
+          title='我是标题'
+          // width={1000}
+          onSubmit={() => setDrawerVisible(false)}
+          onCancel={() => setDrawerVisible(false)}
+        >
+          <div>我是插入抽屉的div啊</div>
+        </Drawer>
       }
     </div>
   );

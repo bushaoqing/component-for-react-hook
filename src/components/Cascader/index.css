@@ -1,3 +1,12 @@
+@keyframes changeHeight {
+  0% {
+    max-height: 0;
+  }
+  100% {
+    max-height: 500px;
+  }
+}
+
 .comp-cascader__div-wrap {
   position: relative;
   display: flex;
@@ -54,6 +63,10 @@
   width: 100%;
   background: #fff;
   z-index: 9;
+
+  /* 高度动画 */
+  animation: changeHeight 1s;
+  overflow: hidden;
 }
 
 .comp-cascader-options__option-wrap-div {
