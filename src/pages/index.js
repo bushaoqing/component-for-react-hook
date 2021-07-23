@@ -8,6 +8,7 @@ import Radiobox from '../components/Radiobox'
 import Checkbox from '../components/Checkbox'
 import Select from '../components/Select'
 import Cascader from '../components/Cascader'
+import Dialog from '../components/Dialog'
 
 // 测试容器
 function InitPage() {
@@ -21,11 +22,13 @@ function InitPage() {
   const [cascaderVal, setCascaderVal] = useState({
     ids: ["B", "B1", "B1-1"]
   })
+  const [visible, setVisible] = useState(false)
   
   
   let time = new Date().toLocaleTimeString()
   return (
     <div className="App">
+      <>
       <div className="app_title">按钮组件展示：</div>
       <Buttom text="aaa" type="submit"  />
 
@@ -220,6 +223,24 @@ function InitPage() {
         // onBlur={() => console.log('onBlur Select curVal: ', cascaderVal)}
         // error={{isError: true, msg: '我是错误提示信息'}}
       />
+      </>
+    
+      <hr/>
+
+      <div className="app_title">弹窗组件展示：</div>
+      <Buttom type='submit' text='点我查看弹窗组件' onClick={() => setVisible(true)} />
+      {
+        visible &&
+        <Dialog
+          title='我是标题'
+          // width={800}
+          // height={600}
+          onSubmit={() => setVisible(false)}
+          onCancel={() => setVisible(false)}
+        >
+          <div>我是插入弹窗的div啊</div>
+        </Dialog>
+      }
     </div>
   );
 }

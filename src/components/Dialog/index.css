@@ -1,0 +1,68 @@
+.comp-dialog__wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.comp-dialog__center-box__wrap {
+  position: absolute;
+  width: 600px;
+  min-height: 100px;
+  padding-bottom: 62px;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background: #fff;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.comp-dialog__center-box__header,
+.comp-dialog__center-box__body,
+.comp-dialog__center-box__footer {
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+
+.comp-dialog__center-box__body,
+.comp-dialog__center-box__footer {
+  border-top: 1px solid #ddd;
+}
+
+.comp-dialog__center-box__header-title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.comp-dialog__center-box__header-cancel-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url(../img/err.png) no-repeat;
+  background-size: cover;
+  position: absolute;
+  right: 20px;
+  top: 14px;
+}
+
+.comp-dialog__center-box__header-cancel-icon:hover {
+  background: url(../img/err_hover@2x.png) no-repeat;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.comp-dialog__center-box__body {
+  overflow-y: overlay;
+  max-height: 500px;
+}
+
+.comp-dialog__center-box__footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: right;
+}
