@@ -4,14 +4,7 @@ import _ from 'lodash'
 import './index.css'
 
 function Select(props) {
-  const [inputValue, setInputValue] = useState(() => {
-    let { value, options, config } = props
-    if (!props.isMultiple) value = [value] // 单选变为多选的处理方式
-
-    let initArr = options.filter(i => value.includes(i[config.value]))
-    let initVal = initArr[0] && initArr[0][config.text] || ''
-    return [initVal]
-  })
+  const [inputValue, setInputValue] = useState(initailVal)
   const [showClearIcon, setShowClearIcon] = useState(false)
   const [isFocus, setFocus] = useState(false)
   const [showOptions, setShowOptions] = useState(false)
@@ -24,10 +17,23 @@ function Select(props) {
     }
   }, [])
 
+  useEffect(() => {
+    setInputValue(initailVal())
+  }, [props.value])
+
   // 关闭下拉选项后需要重置当前组件的下拉选项
   useEffect(() => {
     if (!showOptions) setCurOptions(props.options)
   }, [showOptions])
+
+  function initailVal () {
+    let { value, options, config } = props
+    if (!props.isMultiple) value = [value] // 单选变为多选的处理方式
+
+    let initArr = options.filter(i => value.includes(i[config.value]))
+    let initVal = initArr[0] && initArr[0][config.text] || ''
+    return [initVal]
+  }
 
   function onDocumentClick() {
     setShowOptions(false)

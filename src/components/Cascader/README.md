@@ -4,7 +4,6 @@
 <Cascader 
   value={cascaderVal} 
   isFilter // true：可以模糊搜索
-  isMultiple // true：可以多选
   // disabled // true：下拉框禁用
   disabledObj={{ // 备选项的禁用
     arr: ['E'],

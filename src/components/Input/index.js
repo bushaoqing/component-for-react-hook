@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 import './index.css'
@@ -7,6 +7,10 @@ function Input(props) {
   const [inputValue, setInputValue] = useState(props.value)
   const [showClearIcon, setShowClearIcon] = useState(false)
   const [isFocus, setFocus] = useState(false)
+
+  useEffect(() => {
+    setInputValue(props.value)
+  }, [props.value])
 
   function handleChange (e) {
     let val = e.target.value

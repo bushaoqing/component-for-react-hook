@@ -17,6 +17,7 @@
   border: none;
   outline: none;
   padding: 10px 40px 10px 10px;
+  box-sizing: border-box;
 }
 
 .comp-textarea__input-wrap:disabled {

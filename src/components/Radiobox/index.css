@@ -1,6 +1,7 @@
 .comp-radiobox__single-span {
   display: inline-block;
   height: 40px;
+  line-height: 20px;
   box-sizing: border-box;
   padding: 10px 20px;
   border: 1px solid #ddd;

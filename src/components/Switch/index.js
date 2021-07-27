@@ -1,10 +1,15 @@
 import _ from 'lodash'
-import { useState, useMemo } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import './index.css'
 
 function Swith(props) {
   const [isOpen, setIsOpen] = useState(props.value)
+
+  useEffect(() => {
+    setIsOpen(props.value)
+  }, [props.value])
+
   const valIsBool = useMemo(() => typeof props.value === 'boolean', [props.value])
 
   return (

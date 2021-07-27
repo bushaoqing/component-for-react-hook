@@ -1,0 +1,57 @@
+/* form */
+.comp-form__wrap-butn {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  width: 100%;
+}
+
+.comp-form__wrap-butn > span {
+  margin-left: 10px;
+}
+
+/* formItem */
+.comp-form-item__wrap {
+  display: flex;
+  margin-bottom: 24px;
+  line-height: 40px;
+}
+
+.comp-form-item__wrap-label {
+  display: inline-flex;
+  position: relative;
+}
+
+.comp-form-item__wrap-child {
+  display: inline-flex;
+  width: 100%;
+  position: relative;
+}
+
+.comp-form-item__wrap-child-tip {
+  position: absolute;
+  bottom: -8px;
+  line-height: 0;
+  color: red;
+  font-size: 12px;
+}
+
+.required::before {
+  content: '*';
+  display: inline-block;
+  position: absolute;
+  left: -10px;
+  color: red;
+}
+
+/* 标红 */
+.comp-form-item__wrap-child.is_error .comp-input__div-wrap,
+.comp-form-item__wrap-child.is_error .comp-textarea__div-wrap,
+.comp-form-item__wrap-child.is_error .comp-cascader__div-wrap,
+.comp-form-item__wrap-child.is_error .comp-select__div-wrap {
+  border-color: red;
+}
+
+/* form下的switch样式 */
+.comp-form-item__wrap-child .comp-switch__wrap {
+  margin-top: 6px;
+}

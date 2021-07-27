@@ -1,10 +1,14 @@
 import _ from 'lodash'
 import PropTypes from 'prop-types'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './index.css'
 
 function Checkbox(props) {
   const [curVal, setCurVal] = useState(props.value)
+
+  useEffect(() => {
+    setCurVal(props.value)
+  }, [props.value])
 
   function handleClick(val) {
     if (_.isArray(props.disabled) && props.disabled.length && props.disabled.includes(val)) return

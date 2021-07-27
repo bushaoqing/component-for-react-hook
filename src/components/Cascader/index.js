@@ -26,6 +26,10 @@ function Cascader(props) {
     }
   }, [])
 
+  useEffect(() => {
+    setInputValue(props.value)
+  }, [props.value])
+
   // 根据父组件传递的ids，初始化对应的texts
   function initInputVal() {
     let val = _.cloneDeep(defaultValue)
