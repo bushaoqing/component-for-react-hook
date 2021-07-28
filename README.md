@@ -528,7 +528,7 @@ export default function LoadingDemo() {
   placeholder='请选择时间'
 />
 ````
-![Image 这是时间选择组件案例图片](https://github.com/bushaoqing/react-components-with-hooks/blob/main/readmeImg/timePicker.png)
+![Image 这是时间选择组件案例图片](https://github.com/bushaoqing/react-components-with-hooks/blob/main/readmeImg/timePicker0.png)
 
 ### 16、DatePicker日期选择组件
 ````javascript
