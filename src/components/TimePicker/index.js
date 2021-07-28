@@ -18,7 +18,6 @@ function TimePicker(props) {
   const HourRef2 = useRef()
   const MinRef2 = useRef()
   const SecRef2 = useRef()
-  const TimePickerRef = useRef()
 
   const [hour, setHour] = useState(new Date().getHours())
   const [min, setMin] = useState(new Date().getMinutes())
@@ -60,11 +59,7 @@ function TimePicker(props) {
 
 
   function gloabalClick(e) {
-    let node = TimePickerRef.current
-
-    if (!node.contains(e.target)) {
-      onCancelTime()
-    }
+    onCancelTime()
   }
 
   function getSingelCurTime(h, m, s) {
@@ -308,7 +303,7 @@ function TimePicker(props) {
   return (
     <div 
       className="sdw__time-picker__wrap" 
-      ref={TimePickerRef}
+      onClick={e => e.stopPropagation()}
       style={{ ...(!!width ? {width: width + 12} : {}) }}
     >
       {
