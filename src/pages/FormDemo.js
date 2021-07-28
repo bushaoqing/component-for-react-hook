@@ -13,7 +13,7 @@ import { validateTrim, minLength } from '../util/common'
 const Rules = {
   name: [
     { required: true, name: '用户名', msg: '必填', func: v => validateTrim(v) },
-    { msg: '最小长度为2', func: v => minLength(v, 2) }
+    { msg: '最小长度为2', func: v => minLength(v, 2) },
   ],
   password: [
     { required: true, name: '密码', msg: '必填', func: v => validateTrim(v) },

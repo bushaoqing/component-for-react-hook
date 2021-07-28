@@ -23,7 +23,8 @@ function Form(props) {
       rulesKeys.forEach(key => {
         let rulesArr = _.isArray(rules[key]) && rules[key] || []
 
-        rulesArr.forEach(rule => {
+        for (let i = 0; i < rulesArr.length; i++) {
+          const rule = rulesArr[i]
           let { msg, func } = rule
           let keyVal = formData[key]
           let bool = func(keyVal)
@@ -35,7 +36,9 @@ function Form(props) {
   
           // 只要一个没通过，Form组件体检按钮得到的就是false（未通过校验）
           if (flag && !bool) flag = false 
-        })
+
+          if (!bool) break // 只要数组校验中一条没过，跳过后面的校验
+        }
       })
 
       setRulesResult(result)
