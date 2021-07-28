@@ -1,4 +1,6 @@
 <!-- 
+const [time, setTime] = useState('08:08:08')
+const [rangeTime, setRangeTime] = useState(['08:08:08', '09:09:09'])
 
 <h4>时间点</h4>
 <TimePicker

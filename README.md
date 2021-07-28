@@ -531,3 +531,23 @@ export default function LoadingDemo() {
 />
 ````
 ![Image 这是时间选择组件案例图片](https://github.com/bushaoqing/react-components-with-hooks/blob/main/readmeImg/timePicker.png)
+
+### 16、DatePicker日期选择组件
+````javascript
+<h4>日期</h4>
+<DatePicker
+  disabledDateFun={disabledDateFun}  // 禁用日期
+  value={dateValue}  // 绑定的value值：单个是字符串：'2020-01-01'; 范围是数组：['2020-01-01', '2020-02-08']
+  changeValue={setDateValue}  // 改变value的函数
+/>
+
+<hr/>
+<h4>日期范围</h4>
+<DatePicker
+  showDateRangePickePage={true} // true: 表示选择日期范围   fasle或不配置: 表示选择日期点
+  disabledDateFun={disabledDateFun}  // 禁用日期
+  value={dateValue}  // 绑定的value值：单个是字符串：'2020-01-01'; 范围是数组：['2020-01-01', '2020-02-08']
+  changeValue={setDateValue}  // 改变value的函数
+/>
+````
+![Image 这是日期选择组件案例图片](https://github.com/bushaoqing/react-components-with-hooks/blob/main/readmeImg/datePicker.png)
