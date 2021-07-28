@@ -37,7 +37,7 @@ function Input(props) {
         rows={props.rows}
         disabled={props.disabled}
         placeholder={props.placeholder}
-        style={{ width: '100%', height: '100%' }}
+        style={{ resize: 'none', width: '100%', height: '100%' }}
         onChange={e => handleChange(e)}
         onFocus={() => {
           setFocus(true)
