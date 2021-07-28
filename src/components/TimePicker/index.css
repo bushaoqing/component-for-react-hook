@@ -1,0 +1,213 @@
+@keyframes changeTimePickerHeight {
+  from {
+    max-height: 0;
+  }
+  to {
+    max-height: 300px;
+  }
+}
+
+.sdw__time-picker__wrap {
+  display: inline-block;
+  position: relative;
+}
+
+.sdw__time-picker__show-time-label {
+  display: inline-block;
+  line-height: 40px;
+  border: 1px solid #eee;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  position: relative;
+  top: 1px;
+  right: -4px;
+  background-color: #fff;
+  padding: 0 10px;
+}
+
+.sdw__time-picker__show-time-label.hover {
+  border-color: #265cf0;
+}
+
+.sdw__time-picker__show-time-wrap {
+  display: inline-block;
+  width: 230px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 10px;
+  font-size: 14px;
+}
+
+.sdw__time-picker__show-time-wrap.hover {
+  border-color: #265cf0;
+}
+
+.sdw__time-picker-page-wrap {
+  position: absolute;
+  top: 54px;
+  width: 160px;
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 2px 12px 0 #aaa;
+  z-index: 9;
+  overflow-y: hidden;
+  animation: changeTimePickerHeight .25s;
+}
+
+.sdw__time-picker-page-wrap.range-time {
+  width: 320px;
+}
+
+.sdw__time-picker-page-wrap::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border: 1px solid #eee;
+  transform: rotate(45deg);
+  background-color: #fff;
+  position: absolute;
+  top: -6px;
+  left: 30px;
+  border-bottom-color: #fff;
+  border-right-color: #fff;
+}
+
+/* .sdw__time-picker-page-wrap::after {
+  content: '';
+  display: inline-block;
+  height: 40px;
+  width: 90%;
+  position: absolute;
+  top: 71px;
+  left: 10px;
+  border-top: 1px solid #bbb;
+  border-bottom: 1px solid #bbb;
+} */
+
+.sdw__time-picker-page__main-body {
+  position: relative;
+}
+
+.sdw__time-picker-page__footer {
+  position: relative;
+  color: #265cf0;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+  margin-top: 10px;
+  height: 28px;
+  font-size: 12px;
+}
+
+.sdw__time-picker-page__footer > span {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.sdw__time-picker-page__footer > span:hover {
+  cursor: pointer;
+}
+
+.sdw__time-picker-page__footer .right {
+  position: absolute;
+  right: 10px;
+}
+
+.sdw__time-picker-page__footer .now:hover,
+.sdw__time-picker-page__footer .right:hover {
+  background-color: #265cf0;
+  color: #fff;
+}
+
+.sdw__time-picker-page__footer .right-cancel {
+  position: absolute;
+  right: 50px;
+  color: #999;
+}
+
+.sdw__time-picker-page__footer .right-cancel:hover {
+  color: #265cf0;
+}
+
+.sdw__time-picker-page__item-wrap {
+  display: inline-block;
+  width: 33%;
+  text-align: center;
+  height: 168px;
+  overflow-y: auto;
+}
+
+.sdw__time-picker-page__item-wrap::before,
+.sdw__time-picker-page__item-wrap::after {
+  content: '';
+  display: inline-block;
+  height: 100px;
+}
+
+.sdw__time-picker-page__item-label:hover {
+  cursor: pointer;
+  background-color: #eee;
+}
+
+.sdw__time-picker-page__item-label {
+  padding: 10px 0;
+  font-size: 12px;
+}
+
+.sdw__time-picker-page__item-label.current {
+  color: #fff;
+  background-color: #265cf0;
+}
+
+.sdw__time-picker-page__item-label.disabled {
+  color: #999;
+}
+
+.sdw__time-picker-page__item-label.disabled:hover {
+  cursor: not-allowed;
+  background-color: transparent;
+}
+
+.sdw__time-picker__clear-icon {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: url(./img/clear@2x.png) no-repeat;
+  background-size: cover;
+  position: absolute;
+  right: 10px;
+  top: 14px;
+}
+
+.sdw__time-picker__clear-icon:hover {
+  cursor: pointer;
+}
+
+.sdw__time-picker__placeholder {
+  color: #757575;
+}
+
+/* 时间范围css */
+.sdw__time-picker-range-wrap {
+  display: inline-block;
+  width: 45%;
+}
+
+.sdw__time-picker-range-wrap ~ .sdw__time-picker-range-wrap {
+  margin-left: 22px;
+}
+
+.sdw__time-picker-range-wrap .sdw__time-picker-page__main-body {
+  border: 1px solid #eee;
+}
+
+.sdw__time-picker-range-wrap .time__title {
+  text-align: center;
+  margin-bottom: 8px;
+  font-size: 14px;
+}

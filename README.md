@@ -502,3 +502,32 @@ export default function LoadingDemo() {
 }
 ````
 ![Image 这是遮罩组件案例图片](https://github.com/bushaoqing/react-components-with-hooks/blob/main/readmeImg/loading.png)
+
+### 15、TimePicker时间选择组件
+````javascript
+<h4>时间点</h4>
+<TimePicker
+  // label="我是label"
+  value={time}
+  // disabledTimeRange={['20:10:20-6:30:40', '8:8:8-9:9:9']}  // 禁用时间段
+  disabledTimeRange={['17:10:20-23:10:40']}  // 禁用时间段
+  changeValue={val => setTime(val)}
+  showClearIcon={true}
+  placeholder='请选择时间'
+/>
+
+<hr/>
+
+<h4>时间范围</h4>
+<TimePicker
+  label="时间"
+  showTimeRangePicker={true} // true：表示选择时间范围
+  value={rangeTime}
+  // disabledTimeRange={['20:10:20-6:30:40', '8:8:8-9:9:9']}  // 禁用时间段
+  // disabledTimeRange={['17:10:20-18:10:40']}  // 禁用时间段
+  changeValue={val => setRangeTime(val)}
+  showClearIcon={true}
+  placeholder='请选择时间'
+/>
+````
+![Image 这是时间选择组件案例图片](https://github.com/bushaoqing/react-components-with-hooks/blob/main/readmeImg/timePicker.png)
