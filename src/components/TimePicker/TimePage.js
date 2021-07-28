@@ -75,12 +75,12 @@ export default function TimePage (props) {
   }
 
   return (
-    <div className="sdw__time-picker-page__main-body">
-      <div ref={props.HourRef} className="sdw__time-picker-page__item-wrap">
+    <div className="comp__time-picker-page__main-body">
+      <div ref={props.HourRef} className="comp__time-picker-page__item-wrap">
         {
           Array.from(Array(24)).map((i, k) => {
             let isDisabled = props.disabledPassed ? isHourDisabled(k, props.disableArr) : false
-            let hourClass = 'sdw__time-picker-page__item-label'
+            let hourClass = 'comp__time-picker-page__item-label'
             if (isDisabled) hourClass += ' disabled'
             if (k == props.hour) hourClass += ' current'
             return (
@@ -96,11 +96,11 @@ export default function TimePage (props) {
           })
         }
       </div>
-      <div ref={props.MinRef} className="sdw__time-picker-page__item-wrap">
+      <div ref={props.MinRef} className="comp__time-picker-page__item-wrap">
         {
           Array.from(Array(60)).map((i, k) => {
             let isDisabled = props.disabledPassed ? isMinDisabled(k, props.disableArr, props.hour) : false
-            let minClass = 'sdw__time-picker-page__item-label'
+            let minClass = 'comp__time-picker-page__item-label'
             if (isDisabled) minClass += ' disabled'
             if (k == props.min) minClass += ' current'
             return (
@@ -116,11 +116,11 @@ export default function TimePage (props) {
           })
         }
       </div>
-      <div ref={props.SecRef} className="sdw__time-picker-page__item-wrap">
+      <div ref={props.SecRef} className="comp__time-picker-page__item-wrap">
         {
           Array.from(Array(60)).map((i, k) => {
             let isDisabled = props.disabledPassed ? isSecDisabled(k, props.disableArr, props.hour, props.min) : false
-            let secClass = 'sdw__time-picker-page__item-label'
+            let secClass = 'comp__time-picker-page__item-label'
             if (isDisabled) secClass += ' disabled'
             if (k == props.sec) secClass += ' current'
             return (

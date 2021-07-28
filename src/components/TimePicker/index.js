@@ -302,13 +302,13 @@ function TimePicker(props) {
 
   return (
     <div 
-      className="sdw__time-picker__wrap" 
+      className="comp__time-picker__wrap" 
       onClick={e => e.stopPropagation()}
       style={{ ...(!!width ? {width: width + 12} : {}) }}
     >
       <div
         style={{ ...(!!width ? {width: width} : {}) }}
-        className={showTimePickerPage ? 'sdw__time-picker__show-time-wrap hover' : 'sdw__time-picker__show-time-wrap'}
+        className={showTimePickerPage ? 'comp__time-picker__show-time-wrap hover' : 'comp__time-picker__show-time-wrap'}
         onClick={() => setShowTimePickerPage(v => !v)}
         onMouseEnter={() => setEnterTimePickerInput(true)}
         onMouseLeave={() => setEnterTimePickerInput(false)}
@@ -319,7 +319,7 @@ function TimePicker(props) {
           (
             (showTimeRangePicker && !!value && hour !== '' && min !== '' && sec !== '' && hour2 !== '' && min2 !== '' && sec2 !== '') ?
             getRangeCurTime() :
-            <span className="sdw__time-picker__placeholder">{placeholder}</span>
+            <span className="comp__time-picker__placeholder">{placeholder}</span>
           )
         }
         {
@@ -327,7 +327,7 @@ function TimePicker(props) {
           enterTimePickerInput &&
           hour !== '' && min !== '' && sec !== '' &&
           <i
-            className="sdw__time-picker__clear-icon"
+            className="comp__time-picker__clear-icon"
             onClick={handleClearValue}
           />
         }
@@ -336,7 +336,7 @@ function TimePicker(props) {
         // 选择单个时间点
         showTimePickerPage &&
         !showTimeRangePicker &&
-        <div className="sdw__time-picker-page-wrap" style={{ ...(!!listWidth ? {width: listWidth} : {}) }}>
+        <div className="comp__time-picker-page-wrap" style={{ ...(!!listWidth ? {width: listWidth} : {}) }}>
           <TimePage
             hour={hour}
             min={min}
@@ -350,7 +350,7 @@ function TimePicker(props) {
             onChangeTime={onChangeTime}
             prefixInteger={prefixInteger}
           />
-          <div className="sdw__time-picker-page__footer">
+          <div className="comp__time-picker-page__footer">
             {
               !disabledPassed &&
               <span className="now" onClick={handleNowTime}>此刻</span>
@@ -364,9 +364,9 @@ function TimePicker(props) {
         // 选择时间范围
         showTimePickerPage &&
         showTimeRangePicker &&
-        <div className="sdw__time-picker-page-wrap range-time" style={{ ...(!!listWidth ? {width: listWidth} : {}) }}>
+        <div className="comp__time-picker-page-wrap range-time" style={{ ...(!!listWidth ? {width: listWidth} : {}) }}>
           <div>
-            <div className="sdw__time-picker-range-wrap">
+            <div className="comp__time-picker-range-wrap">
               <div className="time__title">开始时间</div>
               <div>
                 <TimePage
@@ -385,7 +385,7 @@ function TimePicker(props) {
                 />
               </div>
             </div>
-            <div className="sdw__time-picker-range-wrap">
+            <div className="comp__time-picker-range-wrap">
               <div className="time__title">结束时间</div>
               <div>
                 <TimePage
@@ -405,7 +405,7 @@ function TimePicker(props) {
               </div>
             </div>
           </div>
-          <div className="sdw__time-picker-page__footer">
+          <div className="comp__time-picker-page__footer">
             <span className="right-cancel" onClick={onCancelTime}>取消</span>
             <span className="right" onClick={() => setShowTimePickerPage(false)}>确定</span>
           </div>

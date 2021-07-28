@@ -7,12 +7,12 @@
   }
 }
 
-.sdw__time-picker__wrap {
+.comp__time-picker__wrap {
   display: inline-block;
   position: relative;
 }
 
-.sdw__time-picker__show-time-wrap {
+.comp__time-picker__show-time-wrap {
   display: inline-block;
   width: 230px;
   border: 1px solid #eee;
@@ -23,11 +23,11 @@
   font-size: 14px;
 }
 
-.sdw__time-picker__show-time-wrap.hover {
+.comp__time-picker__show-time-wrap.hover {
   border-color: #265cf0;
 }
 
-.sdw__time-picker-page-wrap {
+.comp__time-picker-page-wrap {
   position: absolute;
   top: 54px;
   width: 160px;
@@ -41,11 +41,11 @@
   animation: changeTimePickerHeight .25s;
 }
 
-.sdw__time-picker-page-wrap.range-time {
+.comp__time-picker-page-wrap.range-time {
   width: 320px;
 }
 
-.sdw__time-picker-page-wrap::before {
+.comp__time-picker-page-wrap::before {
   content: '';
   display: inline-block;
   width: 8px;
@@ -60,7 +60,7 @@
   border-right-color: #fff;
 }
 
-/* .sdw__time-picker-page-wrap::after {
+/* .comp__time-picker-page-wrap::after {
   content: '';
   display: inline-block;
   height: 40px;
@@ -72,11 +72,11 @@
   border-bottom: 1px solid #bbb;
 } */
 
-.sdw__time-picker-page__main-body {
+.comp__time-picker-page__main-body {
   position: relative;
 }
 
-.sdw__time-picker-page__footer {
+.comp__time-picker-page__footer {
   position: relative;
   color: #265cf0;
   border-top: 1px solid #eee;
@@ -86,38 +86,38 @@
   font-size: 12px;
 }
 
-.sdw__time-picker-page__footer > span {
+.comp__time-picker-page__footer > span {
   display: inline-block;
   padding: 4px 8px;
   border-radius: 4px;
 }
 
-.sdw__time-picker-page__footer > span:hover {
+.comp__time-picker-page__footer > span:hover {
   cursor: pointer;
 }
 
-.sdw__time-picker-page__footer .right {
+.comp__time-picker-page__footer .right {
   position: absolute;
   right: 10px;
 }
 
-.sdw__time-picker-page__footer .now:hover,
-.sdw__time-picker-page__footer .right:hover {
+.comp__time-picker-page__footer .now:hover,
+.comp__time-picker-page__footer .right:hover {
   background-color: #265cf0;
   color: #fff;
 }
 
-.sdw__time-picker-page__footer .right-cancel {
+.comp__time-picker-page__footer .right-cancel {
   position: absolute;
   right: 50px;
   color: #999;
 }
 
-.sdw__time-picker-page__footer .right-cancel:hover {
+.comp__time-picker-page__footer .right-cancel:hover {
   color: #265cf0;
 }
 
-.sdw__time-picker-page__item-wrap {
+.comp__time-picker-page__item-wrap {
   display: inline-block;
   width: 33%;
   text-align: center;
@@ -125,38 +125,38 @@
   overflow-y: auto;
 }
 
-.sdw__time-picker-page__item-wrap::before,
-.sdw__time-picker-page__item-wrap::after {
+.comp__time-picker-page__item-wrap::before,
+.comp__time-picker-page__item-wrap::after {
   content: '';
   display: inline-block;
   height: 100px;
 }
 
-.sdw__time-picker-page__item-label:hover {
+.comp__time-picker-page__item-label:hover {
   cursor: pointer;
   background-color: #eee;
 }
 
-.sdw__time-picker-page__item-label {
+.comp__time-picker-page__item-label {
   padding: 10px 0;
   font-size: 12px;
 }
 
-.sdw__time-picker-page__item-label.current {
+.comp__time-picker-page__item-label.current {
   color: #fff;
   background-color: #265cf0;
 }
 
-.sdw__time-picker-page__item-label.disabled {
+.comp__time-picker-page__item-label.disabled {
   color: #999;
 }
 
-.sdw__time-picker-page__item-label.disabled:hover {
+.comp__time-picker-page__item-label.disabled:hover {
   cursor: not-allowed;
   background-color: transparent;
 }
 
-.sdw__time-picker__clear-icon {
+.comp__time-picker__clear-icon {
   display: inline-block;
   width: 14px;
   height: 14px;
@@ -167,29 +167,29 @@
   top: 14px;
 }
 
-.sdw__time-picker__clear-icon:hover {
+.comp__time-picker__clear-icon:hover {
   cursor: pointer;
 }
 
-.sdw__time-picker__placeholder {
+.comp__time-picker__placeholder {
   color: #757575;
 }
 
 /* 时间范围css */
-.sdw__time-picker-range-wrap {
+.comp__time-picker-range-wrap {
   display: inline-block;
   width: 45%;
 }
 
-.sdw__time-picker-range-wrap ~ .sdw__time-picker-range-wrap {
+.comp__time-picker-range-wrap ~ .comp__time-picker-range-wrap {
   margin-left: 22px;
 }
 
-.sdw__time-picker-range-wrap .sdw__time-picker-page__main-body {
+.comp__time-picker-range-wrap .comp__time-picker-page__main-body {
   border: 1px solid #eee;
 }
 
-.sdw__time-picker-range-wrap .time__title {
+.comp__time-picker-range-wrap .time__title {
   text-align: center;
   margin-bottom: 8px;
   font-size: 14px;

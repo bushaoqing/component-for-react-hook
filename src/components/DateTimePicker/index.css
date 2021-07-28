@@ -1,0 +1,145 @@
+@keyframes changeDateTimePickerHeight {
+  from {
+    height: 0;
+  }
+  to {
+    height: 440px;
+  }
+}
+
+.comp__date-time-picker__wrap {
+  display: inline-block;
+  position: relative;
+}
+
+.comp__date-time-picker__show-time-wrap {
+  display: inline-block;
+  width: 230px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 10px;
+  font-size: 14px;
+}
+
+.comp__date-time-picker__show-time-wrap.hover {
+  border-color: #265cf0;
+}
+
+.comp__date-time-picker__placeholder {
+  color: #757575;
+}
+
+.comp__date-time-picker__clear-icon {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background-image: url('./img/clear@2x.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  right: 10px;
+  top: 14px;
+}
+
+.comp__date-time-picker__clear-icon:hover {
+  cursor: pointer;
+}
+
+.comp__date-time-picker-page-wrap {
+  position: absolute;
+  top: 54px;
+  width: 344px;
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 2px 12px 0 #aaa;
+  z-index: 9;
+  overflow: hidden;
+  animation: changeDateTimePickerHeight .3s;
+}
+
+.comp__date-time-picker-page-wrap::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border: 1px solid #eee;
+  transform: rotate(45deg);
+  background-color: #fff;
+  position: absolute;
+  top: -6px;
+  left: 30px;
+  border-bottom-color: #fff;
+  border-right-color: #fff;
+}
+
+.comp__date-time-picker-page-wrap .comp__time-picker__wrap {
+  top: 2px;
+}
+
+.comp__date-time-picker-page__footer {
+  position: relative;
+  color: #265cf0;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+  margin-top: 357px;
+  height: 28px;
+}
+
+.comp__date-time-picker-page__footer > span {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.comp__date-time-picker-page__footer > span:hover {
+  cursor: pointer;
+}
+
+.comp__date-time-picker-page__footer .right {
+  position: absolute;
+  right: 10px;
+}
+
+.comp__date-time-picker-page__footer .right:hover {
+  background-color: #265cf0;
+  color: #fff;
+}
+
+.comp__date-time-picker__wrap .comp__date-picker__date-page-wrap {
+  box-shadow: none;
+  border-top: 1px solid #eee;
+}
+
+.comp__date-time-picker-page__left-date,
+.comp__date-time-picker-page__right-date {
+  display: inline-block;
+  width: 146px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 4px;
+  padding-left: 10px;
+  font-size: 14px;
+  border: 1px solid #eee;
+}
+
+.comp__date-time-picker-page__left-date {
+  display: inline-block;
+  width: 146px;
+  line-height: 40px;
+  border-radius: 4px;
+  padding-left: 10px;
+  font-size: 14px;
+  border: 1px solid #eee;
+  position: fixed;
+  margin-top: 2px;
+}
+
+.comp__date-time-picker-page__right-date {
+  margin-left: 16px;
+  position: relative;
+  top: 2px;
+}

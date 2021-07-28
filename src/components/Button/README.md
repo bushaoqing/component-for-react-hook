@@ -1,7 +1,7 @@
 <!-- 使用案列 -->
 
 <!-- 
-<SdwButton 
+<Button 
   type="submit"
   iconClass=""
   text="确定"

@@ -7,7 +7,7 @@
   }
 }
 
-.sdw__date-picker__date-page-wrap {
+.comp__date-picker__date-page-wrap {
   position: absolute;
   top: 56px;
   height: 344px;
@@ -19,9 +19,9 @@
   animation: changeDatePickerHeight 0.3s;
 }
 
-.sdw__date-picker__input-wrap,
-.sdw__date-picker__input,
-.sdw__date-picker__input:focus {
+.comp__date-picker__input-wrap,
+.comp__date-picker__input,
+.comp__date-picker__input:focus {
   display: inline-block;
   height: 42px;
   background: #fff;
@@ -30,25 +30,25 @@
   outline: none;
 }
 
-.sdw__date-picker__input-wrap {
+.comp__date-picker__input-wrap {
   position: relative;
   width: 273px;
   border-color: transparent;
 }
 
-.sdw__date-picker__input {
+.comp__date-picker__input {
   padding: 0 8px;
   display: inline-block;
   width: 255px;
   font-size: 15px;
 }
 
-.sdw__date-picker__input.light-color {
+.comp__date-picker__input.light-color {
   border-color: #265cf0;
 }
 
-.sdw__date-picker__input-wrap::after,
-.sdw__date-picker__input-clear-icon {
+.comp__date-picker__input-wrap::after,
+.comp__date-picker__input-clear-icon {
   display: inline-block;
   width: 14px;
   height: 14px;
@@ -57,22 +57,22 @@
   top: 14px;
 }
 
-.sdw__date-picker__input-wrap:not(:hover):after {
+.comp__date-picker__input-wrap:not(:hover):after {
   content: '';
   background: url(./img/icon_data_picker@2x.png) no-repeat;
   background-size: cover;
 }
 
-.sdw__date-picker__input-clear-icon {
+.comp__date-picker__input-clear-icon {
   background: url(./img/clear@2x.png) no-repeat;
   background-size: cover;
 }
 
-.sdw__date-picker__input-clear-icon:hover {
+.comp__date-picker__input-clear-icon:hover {
   cursor: pointer;
 }
 
-.sdw__date-picker__date-range-wrap {
+.comp__date-picker__date-range-wrap {
   position: absolute;
   width: 324px;
   padding: 10px;
@@ -80,18 +80,18 @@
   background-color: #fff;
 }
 
-.sdw__date-picker__date-range-wrap.second {
+.comp__date-picker__date-range-wrap.second {
   left: 340px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   border-left: 1px solid #eee;
 }
 
-.sdw__date-picker__date-range-wrap.second::before {
+.comp__date-picker__date-range-wrap.second::before {
   display: none;
 }
 
-.sdw__date-picker__date-range-wrap::before {
+.comp__date-picker__date-range-wrap::before {
   content: '';
   display: inline-block;
   width: 8px;
@@ -106,40 +106,40 @@
   border-right-color: #fff;
 }
 
-.sdw__date-picker__date-range-title {
+.comp__date-picker__date-range-title {
   position: relative;
 }
 
-.sdw__date-picker__date-range-title > span {
+.comp__date-picker__date-range-title > span {
   display: inline-block;
   text-align: center;
 }
 
-.sdw__date-picker__date-range-year {
+.comp__date-picker__date-range-year {
   width: 260px;
 }
 
-.sdw__date-picker__date-range-year-month {
+.comp__date-picker__date-range-year-month {
   width: 190px;
 }
 
-.sdw__date-picker__date-range-year > span:hover,
-.sdw__date-picker__date-range-year-month > span:hover {
+.comp__date-picker__date-range-year > span:hover,
+.comp__date-picker__date-range-year-month > span:hover {
   color: #265cf0;
   cursor: pointer;
 }
 
-.sdw__date-picker__date-range-btn {
+.comp__date-picker__date-range-btn {
   width: 24px;
   cursor: pointer;
   margin: 0 4px;
 }
 
-.sdw__date-picker__date-range-btn:hover {
+.comp__date-picker__date-range-btn:hover {
   color: #265cf0;
 }
 
-.sdw__date-picker__date-range-btn.left-year-btn::before {
+.comp__date-picker__date-range-btn.left-year-btn::before {
   content: '';
   display: inline-block;
   height: 16px;
@@ -150,7 +150,7 @@
   vertical-align: middle;
 }
 
-.sdw__date-picker__date-range-btn.right-year-btn::before {
+.comp__date-picker__date-range-btn.right-year-btn::before {
   content: '';
   display: inline-block;
   height: 16px;
@@ -160,7 +160,7 @@
   vertical-align: middle;
 }
 
-.sdw__date-picker__date-range-btn.right-month-btn::before {
+.comp__date-picker__date-range-btn.right-month-btn::before {
   content: '';
   display: inline-block;
   height: 14px;
@@ -171,7 +171,7 @@
   vertical-align: middle;
 }
 
-.sdw__date-picker__date-range-btn.left-month-btn::before {
+.comp__date-picker__date-range-btn.left-month-btn::before {
   content: '';
   display: inline-block;
   height: 14px;
@@ -182,12 +182,12 @@
   vertical-align: middle;
 }
 
-.sdw__date-picker__date-range-week {
+.comp__date-picker__date-range-week {
   border-bottom: 1px solid #eee;
   padding: 18px 0 8px;
 }
-.sdw__date-picker__date-range-week > span,
-.sdw__date-picker__date-range-day-btn-wrap {
+.comp__date-picker__date-range-week > span,
+.comp__date-picker__date-range-day-btn-wrap {
   display: inline-block;
   width: 40px;
   height: 34px;
@@ -198,12 +198,12 @@
   position: relative;
 }
 
-.sdw__date-picker__date-range-day {
+.comp__date-picker__date-range-day {
   height: 40px;
   line-height: 40px;
 }
 
-.sdw__date-picker__date-range-day-btn {
+.comp__date-picker__date-range-day-btn {
   cursor: pointer;
   display: inline-block;
   width: 30px;
@@ -217,30 +217,30 @@
   margin: auto;
 }
 
-.sdw__date-picker__date-range-day-btn:hover {
+.comp__date-picker__date-range-day-btn:hover {
   background-color: #eee;
 }
 
-.sdw__date-picker__date-range-day-btn.gray {
+.comp__date-picker__date-range-day-btn.gray {
   color: #c0c4cc;
 }
 
-.sdw__date-picker__date-range-day-btn.today {
+.comp__date-picker__date-range-day-btn.today {
   color: #265cf0;
   font-weight: 700;
 }
 
-.sdw__date-picker__date-range-day-btn.current {
+.comp__date-picker__date-range-day-btn.current {
   background-color: #265cf0;
   color: #fff;
 }
 
-.sdw__date-picker__ten-years-wrap {
+.comp__date-picker__ten-years-wrap {
   margin-top: 16px;
   border-top: 1px solid #eee;
 }
 
-.sdw__date-picker__ten-years-item {
+.comp__date-picker__ten-years-item {
   display: inline-block;
   width: 25%;
   height: 60px;
@@ -248,23 +248,23 @@
   text-align: center;
 }
 
-.sdw__date-picker__ten-years-item:hover {
+.comp__date-picker__ten-years-item:hover {
   cursor: pointer;
   color: #265cf0;
 }
 
-.sdw__date-picker__date-range-day-btn.disabled,
-.sdw__date-picker__date-range-day-btn-wrap.disabled {
+.comp__date-picker__date-range-day-btn.disabled,
+.comp__date-picker__date-range-day-btn-wrap.disabled {
   cursor: not-allowed;
   color: #999;
   background-color: #eee;
 }
 
-.sdw__date-picker__date-range-day-btn-wrap.range__in {
+.comp__date-picker__date-range-day-btn-wrap.range__in {
   background-color: #eee;
 }
 
-.sdw__date-picker__date-range-day-btn-wrap.current.max__date::before {
+.comp__date-picker__date-range-day-btn-wrap.current.max__date::before {
   content: '';
   display: inline-block;
   width: 100%;
@@ -275,7 +275,7 @@
   left: -2px;
 }
 
-.sdw__date-picker__date-range-day-btn-wrap.current.min__date::before {
+.comp__date-picker__date-range-day-btn-wrap.current.min__date::before {
   content: '';
   display: inline-block;
   width: 100%;
