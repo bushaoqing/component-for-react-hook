@@ -1,5 +1,6 @@
 import page from '../pages'
 import FormDemo from '../pages/FormDemo'
+import LoadingDemo from '../pages/LoadingDemo'
 import Button from "../components/Button"
 import CopyText from "../components/CopyText"
 import Input from "../components/Input"
@@ -36,6 +37,10 @@ const RouteMap = [
         name: 'Form案例',
         path: '/FormDemo',
         component: FormDemo
+    }, {
+        name: 'Loading案例',
+        path: '/LoadingDemo',
+        component: LoadingDemo
     }
 ]
 

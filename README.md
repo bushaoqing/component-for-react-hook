@@ -468,3 +468,37 @@ export default FormDemo
 ![Image 这是Form表单组件案例图片](https://github.com/bushaoqing/react-components-with-hooks/blob/main/readmeImg/form.png)
 ![Image 这是Form表单组件案例图片](https://github.com/bushaoqing/react-components-with-hooks/blob/main/readmeImg/form1.png)
 ![Image 这是Form表单组件案例图片](https://github.com/bushaoqing/react-components-with-hooks/blob/main/readmeImg/form2.png)
+
+### 14、Loading遮罩组件案例图片
+````javascript
+import { useState } from 'react'
+import Buttom from '../components/Button'
+import Loading from '../components/Loading'
+
+export default function LoadingDemo() {
+
+  const [isLoading, setisLoading] = useState(false)
+
+  return (
+    <>
+      <Loading 
+        isLoading={isLoading} 
+        tip="拼命加载中..."
+        // hideIcon={true}
+      >
+        <div style={{
+          marginTop: 20,
+          width: 1000,
+          height: 800,
+          border: "1px solid #ddd"
+        }}>
+          我是展示内容
+        </div>
+      </Loading>
+      <br/>
+      <Buttom type="submit" text="撤换loading" onClick={() => setisLoading(v => !v)} />
+    </>
+  )
+}
+````
+![Image 这是遮罩组件案例图片](https://github.com/bushaoqing/react-components-with-hooks/blob/main/readmeImg/loading.png)
