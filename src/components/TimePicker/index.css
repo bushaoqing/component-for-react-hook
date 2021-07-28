@@ -12,23 +12,6 @@
   position: relative;
 }
 
-.sdw__time-picker__show-time-label {
-  display: inline-block;
-  line-height: 40px;
-  border: 1px solid #eee;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-  position: relative;
-  top: 1px;
-  right: -4px;
-  background-color: #fff;
-  padding: 0 10px;
-}
-
-.sdw__time-picker__show-time-label.hover {
-  border-color: #265cf0;
-}
-
 .sdw__time-picker__show-time-wrap {
   display: inline-block;
   width: 230px;

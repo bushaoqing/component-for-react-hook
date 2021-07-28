@@ -295,7 +295,7 @@ function TimePicker(props) {
   const leftDisableArr = [+hour2, +min2, +sec2, 24, 0, 0]
   const rightDisableArr = [0, 0, 0, +hour, +min, +sec]
 
-  let { disabledTimeRange, label, showClearIcon, placeholder, showTimeRangePicker, value, width, listWidth } = props
+  let { disabledTimeRange, showClearIcon, placeholder, showTimeRangePicker, value, width, listWidth } = props
 
   // 时间禁用校验，过：【true, [[1,0,0,2,0,0],[4,10,20,5,30,40]...]】，不过：【false, null】
   let [disabledPassed, disableArr] = disableValidate(disabledTimeRange)
@@ -306,10 +306,6 @@ function TimePicker(props) {
       onClick={e => e.stopPropagation()}
       style={{ ...(!!width ? {width: width + 12} : {}) }}
     >
-      {
-        !!label &&
-        <span className={showTimePickerPage ? 'sdw__time-picker__show-time-label hover' : 'sdw__time-picker__show-time-label'}>{label}</span>
-      }
       <div
         style={{ ...(!!width ? {width: width} : {}) }}
         className={showTimePickerPage ? 'sdw__time-picker__show-time-wrap hover' : 'sdw__time-picker__show-time-wrap'}
@@ -423,7 +419,6 @@ TimePicker.propsTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   changeValue: PropTypes.func,
   disabledTimeRange: PropTypes.array,
-  label: PropTypes.string,
   showClearIcon: PropTypes.bool,
   placeholder: PropTypes.string,
   showTimeRangePicker: PropTypes.bool,
