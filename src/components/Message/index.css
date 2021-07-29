@@ -1,0 +1,91 @@
+.comp_message-box-wrap {
+  position: absolute;
+  max-width: 60%;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  padding: 14px 30px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.comp_message-box-wrap.info-message {
+  border: 1px solid #49c2fc;
+  background-color: #e4f6ff;
+}
+
+.comp_message-box-wrap.info-message::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url(./img/info@2x.png) no-repeat;
+  background-size: cover;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+.comp_message-box-wrap.success-message {
+  border: 1px solid #01c39e;
+  background-color: #e6f9f6;
+}
+
+.comp_message-box-wrap.success-message::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url(./img/success@2x.png) no-repeat;
+  background-size: cover;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+.comp_message-box-wrap.warn-message {
+  border: 1px solid #fcb849;
+  background-color: #fff1db;
+}
+
+.comp_message-box-wrap.warn-message::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url(./img/warning@2x.png) no-repeat;
+  background-size: cover;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+.comp_message-box-wrap.error-message {
+  border: 1px solid #ff5e5e;
+  background-color: #ffeeee;
+}
+
+.comp_message-box-wrap.error-message::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url(./img/error@2x.png) no-repeat;
+  background-size: cover;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+.comp_message-box-wrap.error-message .comp_message-error-closer {
+  display: inline-block;
+  height: 18px;
+  width: 18px;
+  margin-left: 10px;
+  background: url(./img/cancel.png) no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.comp_message-box-wrap.error-message .comp_message-error-closer:hover {
+  background: url(./img/cancel_hover.png) no-repeat;
+  background-size: cover;
+}

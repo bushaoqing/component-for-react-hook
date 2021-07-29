@@ -7,6 +7,7 @@ import Input from "../components/Input"
 import Textarea from "../components/Textarea"
 import Switch from "../components/Switch"
 import DateTimeDemo from "../pages/DateTimeDemo"
+import MessageDemo from "../pages/MessageDemo"
 
 // 侧边菜单栏
 const RouteMap = [
@@ -46,6 +47,10 @@ const RouteMap = [
         name: 'DateTimeDemo案例',
         path: '/DateTimeDemo',
         component: DateTimeDemo
+    }, {
+        name: 'MessageDemo案例',
+        path: '/MessageDemo',
+        component: MessageDemo
     }
 ]
 

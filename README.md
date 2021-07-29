@@ -576,3 +576,15 @@ function disabledDateTimeFun(time) {
 />
 ````
 ![Image 这是日期时间选择组件案例图片](https://github.com/bushaoqing/react-components-with-hooks/blob/main/readmeImg/dateTimePicker.png)
+
+### 18、Message全局提示组件
+````javascript
+<Button type="submit" text="一般提示" onClick={() => Message.info('一般提示!')} />
+<hr/>
+<Button type="submit" text="成功提示" onClick={() => Message.success('成功提示!')} />
+<hr/>
+<Button type="submit" text="告警提示" onClick={() => Message.warn('告警提示!')} />
+<hr/>
+<Button type="submit" text="失败提示" onClick={() => Message.error('失败提示!')} />
+````
+![Image 这是全局提示组件案例图片](https://github.com/bushaoqing/react-components-with-hooks/blob/main/readmeImg/message.png)
