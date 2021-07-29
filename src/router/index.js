@@ -10,6 +10,7 @@ import DateTimeDemo from "../pages/DateTimeDemo"
 import MessageDemo from "../pages/MessageDemo"
 import LayoutDemo from "../pages/LayoutDemo"
 import TabsDemo from "../pages/TabsDemo"
+import PopoverDemo from "../pages/PopoverDemo"
 
 // 侧边菜单栏
 const RouteMap = [
@@ -61,6 +62,10 @@ const RouteMap = [
         name: 'TabsDemo案例',
         path: '/TabsDemo',
         component: TabsDemo
+    }, {
+        name: 'PopoverDemo案例',
+        path: '/PopoverDemo',
+        component: PopoverDemo
     }
 ]
 
