@@ -1,0 +1,7 @@
+.comp__layout__col-wrap {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.comp__layout__row-wrap {
+  border: 1px solid #ddd;
+}
