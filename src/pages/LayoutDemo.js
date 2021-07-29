@@ -82,7 +82,7 @@ export default function LayoutDemo() {
       <h3>设置上下左右的间隔：上下：8px；左右：10px (红色边框是最外边的容器边框)</h3>
       <div style={{ border: '1px solid red' }}>
         <Layout.Row gutter={20} marginTop={16} marginBottom={8}>
-          <Layout.Col span={6}>col1</Layout.Col>
+          <Layout.Col span={6}>默认为flex-start</Layout.Col>
           <Layout.Col span={6}>col3</Layout.Col>
           <Layout.Col span={6}>
             <div>col4</div>
@@ -109,7 +109,7 @@ export default function LayoutDemo() {
         </Layout.Row>
 
         <Layout.Row gutter={20} marginTop={16} marginBottom={8} justigy="space-between">
-          <Layout.Col span={6}>justigy="space-between"</Layout.Col>
+          <Layout.Col span={6}>"space-between"</Layout.Col>
           <Layout.Col span={6}>col2</Layout.Col>
           <Layout.Col span={6}>
             <div>col4</div>
@@ -118,7 +118,7 @@ export default function LayoutDemo() {
         </Layout.Row>
 
         <Layout.Row gutter={20} marginTop={16} marginBottom={8} justigy="space-around">
-          <Layout.Col span={6}>justigy="space-around"</Layout.Col>
+          <Layout.Col span={6}>"space-around"</Layout.Col>
           <Layout.Col span={6}>col2</Layout.Col>
           <Layout.Col span={6}>
             <div>col4</div>

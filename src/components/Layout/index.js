@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
 
 const LayoutContext = React.createContext()
 
