@@ -1,0 +1,31 @@
+.comp_model-training__file-upload-wrap {
+  position: relative;
+  top: -2px;
+}
+
+.comp_model-training__file-upload-wrap:hover .upload-btn {
+  border-color: #0052D9;
+  color: #0052D9;
+}
+
+.comp_model-training__file-upload-wrap .upload-input,
+.comp_model-training__file-upload-wrap .upload-btn {
+  position: absolute;
+  width: 70px;
+  border-radius: 4px;
+  padding: 2px;
+}
+
+.comp_model-training__file-upload-wrap .upload-btn {
+  display: inline-block;
+  border: 1px solid #eee;
+  text-align: center;
+}
+
+.comp_model-training__file-upload-wrap .upload-input {
+  opacity: 0;
+}
+
+.comp_model-training__file-upload-wrap .upload-input:hover {
+  cursor: pointer;
+}

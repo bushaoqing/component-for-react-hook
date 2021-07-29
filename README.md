@@ -588,3 +588,15 @@ function disabledDateTimeFun(time) {
 <Button type="submit" text="失败提示" onClick={() => Message.error('失败提示!')} />
 ````
 ![Image 这是全局提示组件案例图片](https://github.com/bushaoqing/react-components-with-hooks/blob/main/readmeImg/message.png)
+
+### 19、UpLoad上传文件组件
+````javascript
+const [file, setfile] = useState(null)
+
+<UpLoad 
+  value={file} 
+  changeValue={setfile}
+  // accees=".xlsx,.xls" // 选择文件类型
+/>
+````
+![Image 这是上传文件组件案例图片](https://github.com/bushaoqing/react-components-with-hooks/blob/main/readmeImg/upload.png)
