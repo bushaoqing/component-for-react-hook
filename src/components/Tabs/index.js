@@ -6,7 +6,7 @@ function Tabs(props) {
   let { menu } = props
 
   const [curIndex, setCurIndex] = useState(0)
-  console.log('curIndex: ', curIndex);
+  const Comp = menu[curIndex].component
 
   return (
     <div>
@@ -33,8 +33,8 @@ function Tabs(props) {
             }}></span>
           </span>
           {
-            menu[curIndex].component !== null &&
-            menu[curIndex].component()
+            Comp !== null &&
+            <Comp />
           }
         </>
       }

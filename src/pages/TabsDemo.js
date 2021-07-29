@@ -3,7 +3,7 @@ import Tabs from '../components/Tabs'
 
 import AAA from './LoadingDemo'
 import BBB from './FormDemo'
-import CCC from './MessageDemo'
+import CCC from './LayoutDemo'
 import DDD from './MessageDemo'
 
 const menu = [
