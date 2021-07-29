@@ -39,7 +39,7 @@ const Rules = {
   ]
 }
 
-const initialState = {
+const initialFormData = {
   name: '',
   password: '',
   email: '',
@@ -53,7 +53,7 @@ const initialState = {
 
 function FormDemo() {
 
-  const [formData, setFormData] = useState(initialState)
+  const [formData, setFormData] = useState(initialFormData)
 
   function updateFormData(key, val) {
     let cloneFormData = _.cloneDeep(formData)
@@ -76,7 +76,7 @@ function FormDemo() {
         // resetText='取消'
         onReset={() => {
           console.log('点了重置按钮')
-          setFormData(initialState)
+          setFormData(initialFormData)
         }}
         // submitText='确定'
         // hideSubmit

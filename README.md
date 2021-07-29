@@ -737,3 +737,42 @@ export default function LayoutDemo() {
 ````
 ![Image 这是布局组件案例图片](https://github.com/bushaoqing/react-components-with-hooks/blob/main/readmeImg/layout.png)
 
+### 21、Tabs组件
+````javascript
+import React from 'react'
+import Tabs from '../components/Tabs'
+
+import AAA from './AAA'
+import BBB from './BBB'
+import CCC from './CCC'
+import DDD from './DDD'
+
+const menu = [
+  {
+    title: 'AAA',
+    path: '/AAA',
+    component: AAA
+  }, {
+    title: 'BBB',
+    path: '/BBB',
+    component: BBB
+  }, {
+    title: 'CCC',
+    path: '/CCC',
+    component: CCC
+  }, {
+    title: 'DDD',
+    path: '/DDD',
+    component: DDD
+  }
+]
+
+const TabsDemo = () => (
+  <Tabs 
+    menu={menu}
+  />
+)
+
+export default TabsDemo
+````
+![Image 这是Tabs组件案例图片](https://github.com/bushaoqing/react-components-with-hooks/blob/main/readmeImg/tabs.png)

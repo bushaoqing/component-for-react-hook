@@ -9,6 +9,7 @@ import Switch from "../components/Switch"
 import DateTimeDemo from "../pages/DateTimeDemo"
 import MessageDemo from "../pages/MessageDemo"
 import LayoutDemo from "../pages/LayoutDemo"
+import TabsDemo from "../pages/TabsDemo"
 
 // 侧边菜单栏
 const RouteMap = [
@@ -56,6 +57,10 @@ const RouteMap = [
         name: 'LayoutDemo案例',
         path: '/LayoutDemo',
         component: LayoutDemo
+    }, {
+        name: 'TabsDemo案例',
+        path: '/TabsDemo',
+        component: TabsDemo
     }
 ]
 
