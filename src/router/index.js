@@ -11,6 +11,7 @@ import MessageDemo from "../pages/MessageDemo"
 import LayoutDemo from "../pages/LayoutDemo"
 import TabsDemo from "../pages/TabsDemo"
 import PopoverDemo from "../pages/PopoverDemo"
+import TableDemo from "../pages/TableDemo"
 
 // 侧边菜单栏
 const RouteMap = [
@@ -66,6 +67,10 @@ const RouteMap = [
         name: 'PopoverDemo案例',
         path: '/PopoverDemo',
         component: PopoverDemo
+    }, {
+        name: 'TableDemo案例',
+        path: '/TableDemo',
+        component: TableDemo
     }
 ]
 

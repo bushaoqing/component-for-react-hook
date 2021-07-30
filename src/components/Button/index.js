@@ -7,7 +7,7 @@ function Button(props) {
 
   return (
     <span 
-      className={`comp-button-wrap__${type} ${iconClass} ${disabled ? 'disabled' : ''}`}
+      className={`comp-button-wrap__${type} ${!!iconClass ? iconClass : ''} ${disabled ? 'disabled' : ''}`}
       style={style}
       onClick={() => {
         if (disabled) return

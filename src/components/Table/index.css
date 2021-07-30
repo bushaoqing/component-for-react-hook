@@ -1,0 +1,50 @@
+.comp__table-outer-div-wrap {
+  overflow: overlay;
+}
+
+.comp__table-wrap {
+  min-width: 100%;
+  width: max-content;
+  overflow: overlay;
+  position: relative;
+  background-color: #fff;
+  padding-bottom: 16px;
+}
+
+.comp__table-wrap thead {
+  background-color: #eef2fe;
+}
+
+.comp__table-wrap td,
+.comp__table-wrap th {
+  padding: 4px 16px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  box-sizing: border-box;
+}
+
+.comp__table-wrap th {
+  font-weight: 500;
+  color: #666;
+}
+
+.comp__table-wrap thead tr th.stickyed {
+  background-color: #eef2fe;
+}
+
+.comp__table-wrap tbody tr:nth-of-type(odd) {
+  background-color: #fbfbfb;
+}
+
+.comp__table-wrap tbody tr:nth-of-type(even) {
+  background-color: #fff;
+}
+
+.comp__table-wrap .stickyed {
+  position: sticky;
+  z-index: 9;
+  box-shadow: -7px 0 50px -2px rgb(0 0 0 / 10%);
+  right: 0;
+  background: inherit;
+  overflow: hidden;
+}
