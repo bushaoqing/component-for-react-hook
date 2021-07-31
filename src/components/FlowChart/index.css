@@ -1,0 +1,10 @@
+.comp__flow-chart-wrap {
+  display: flex
+}
+
+.comp__flow-chart-wrap_tools {
+  width: 100px;
+  border: 1px solid #eee;
+  box-sizing: border-box;
+  padding: 4px;
+}

@@ -1,0 +1,8 @@
+.comp__flow-chart_tools_div {
+  width: 60px; 
+  height: 60px; 
+  margin-bottom: 8px; 
+  cursor: pointer;
+  user-select: 'none';
+  color: #fff;
+}

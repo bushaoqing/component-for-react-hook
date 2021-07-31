@@ -12,6 +12,7 @@ import LayoutDemo from "../pages/LayoutDemo"
 import TabsDemo from "../pages/TabsDemo"
 import PopoverDemo from "../pages/PopoverDemo"
 import TableDemo from "../pages/TableDemo"
+import SvgDemo from "../pages/SvgDemo"
 
 // 侧边菜单栏
 const RouteMap = [
@@ -71,6 +72,10 @@ const RouteMap = [
         name: 'TableDemo案例',
         path: '/TableDemo',
         component: TableDemo
+    }, {
+        name: 'SvgDemo案例',
+        path: '/SvgDemo',
+        component: SvgDemo
     }
 ]
 
