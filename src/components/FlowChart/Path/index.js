@@ -27,15 +27,21 @@ function Path(props) {
     position.x4 = +endP[0]
     position.y4 = +endP[1]
 
-    position.x2 = (+endP[0] + +startP[0]) / 3 * 2
-    position.y2 = (+endP[1] + +startP[1]) / 7 * 6
-    position.x3 = (+endP[0] + +startP[0]) / 3
-    position.y3 = (+endP[1] + +startP[1]) / 7
+    if (props.isBottomToTop) {
+      position.x2 = +startP[0]
+      position.y2 = (+endP[1] + +startP[1]) / 2
+      position.x3 = +endP[0]
+      position.y3 = (+endP[1] + +startP[1]) / 2
+    } else {
+      position.x2 = (+startP[0] + +endP[0]) / 2
+      position.y2 = +startP[1]
+      position.x3 = (+startP[0] + +endP[0]) / 2
+      position.y3 = +endP[1]
+    }
   }
 
   return (
-    <svg style={{ overflow: 'visible', width: 'auto', height: 'auto' }}>
-    {/* <svg width='100%' height='100%'> */}
+    <svg style={{ position: 'absolute', overflow: 'visible', width: '1px', height: '1px' }}>
       <defs>
         <marker 
           id="markertriangle" 
@@ -53,14 +59,24 @@ function Path(props) {
       <path
         markerEnd='url(#markertriangle)' 
         // d='M0 0 C100 30 150 170 200 200' 
-        d={`M${position.x1},${position.y1},${position.x4},${position.y4}`}
-        // d={`M${position.x1},${position.y1},C${position.x2},${position.y2},${position.x3},${position.y3},${position.x4},${position.y4}`}
+        // d={`M${position.x1},${position.y1},${position.x4},${position.y4}`}
+        d={`M${position.x1},${position.y1},C${position.x2},${position.y2},${position.x3},${position.y3},${position.x4},${position.y4}`}
         style={{
           stroke:'#ddd',
           strokeWidth:'1.6',
           fill:'none'
         }}
       />
+      {/* 折线 */}
+      {/* <polyline 
+        markerEnd='url(#markertriangle)' 
+        points={`${position.x1},${position.y1} ${position.x2},${position.y2} ${position.x3},${position.y3} ${position.x4},${position.y4}`}
+        style={{
+          stroke:'#ddd',
+          strokeWidth:'1.6',
+          fill:'none'
+        }} 
+      /> */}
     </svg>
   )
 }
@@ -68,11 +84,13 @@ function Path(props) {
 Path.propTypes = {
   startP: PropTypes.array, // 线段开始坐标（相对于FlowChart组件的div，取相对位置）
   endP: PropTypes.array, // 线段结束坐标
+  isBottomToTop: PropTypes.bool
 }
 
 Path.defaultProps = {
   startP: [0, 0],
-  endP: [80, 80],
+  endP: [0, 0],
+  isBottomToTop: true
 }
 
 export default Path

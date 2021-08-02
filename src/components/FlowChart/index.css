@@ -8,3 +8,47 @@
   box-sizing: border-box;
   padding: 4px;
 }
+
+/* 每个div的上下左右4个点 */
+.comp__flow-chart__obj-wrap {
+  position: relative;
+}
+
+.comp__flow-chart_obj-point {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ed7b2f;
+  border-radius: 50%;
+}
+
+.comp__flow-chart_obj-point:hover {
+  background-color: #ed7b2f;
+  border-color: #fff;
+}
+
+.comp__flow-chart_obj-point.top {
+  left: 50%;
+  top: -4px;
+  transform: translateX(-50%);
+}
+
+.comp__flow-chart_obj-point.right {
+  right: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.comp__flow-chart_obj-point.bottom {
+  left: 50%;
+  bottom: -4px;
+  transform: translateX(-50%);
+}
+
+.comp__flow-chart_obj-point.left {
+  left: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+}
