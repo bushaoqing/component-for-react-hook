@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState, useEffect, Fragment } from 'react'
+import { useState, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import Path from './Path'
 import Tools from './Tools'
@@ -10,7 +10,9 @@ function FlowChart(props) {
   let { width, height, style } = props
   const [record, setRecord] = useState([]) // 存储数据
   const [pathArr, setPathArr] = useState([])
-  const [prevBegin, setPrevBegin] = useState([]) // 临时存储出发点
+  const [prevBegin, setPrevBegin] = useState({}) // 临时存储出发点
+  const [mouseP, setMouseP] = useState([]) // 时刻记录鼠标的位置
+  const [showTimePath, setShowTimePath] = useState(false) // 时刻记录鼠标的位置
 
   function handleDrop(event) {
     // console.log('handleDrop: ', event)
@@ -28,14 +30,10 @@ function FlowChart(props) {
         let obj = {
           id: Date.now(), // 生成唯一标识id，用于之后移动元素
           style: {
-            position: 'absolute',
             left: left,
             top: top,
             backgroundColor: color,
-            display: 'inline-block',
-            color: '#fff',
             padding: 6,
-            boxSizing: 'border-box',
             width: 60,
             height: 60
           },
@@ -67,7 +65,6 @@ function FlowChart(props) {
   }
 
   function handleMouseDown(id, position) {
-    // console.log(id, position);
     setPrevBegin({
       beginID: id,
       beginPosition: position
@@ -78,7 +75,7 @@ function FlowChart(props) {
     // console.log(id, position, prevBegin);
 
     // 结束点的id不能和出发点一样（表示不同的div相连）
-    if (prevBegin.id !== id) {
+    if (prevBegin.beginID && id && prevBegin.beginID !== id) {
       let clonePathArr = _.cloneDeep(pathArr)
       clonePathArr.push({
         ...prevBegin,
@@ -86,6 +83,16 @@ function FlowChart(props) {
         endPosition: position
       })
       setPathArr(clonePathArr)
+      setPrevBegin({})
+    }
+  }
+
+  function handleUpate(id, value) {
+    let cloneRecord = _.cloneDeep(record)
+    let index = cloneRecord.findIndex(i => i.id === id)
+    if (index !== -1) {
+      cloneRecord[index].textContent = value
+      setRecord(cloneRecord)
     }
   }
 
@@ -110,6 +117,16 @@ function FlowChart(props) {
         }}
         onDrop={e => handleDrop(e)}
         onDragOver={e => e.preventDefault()}
+        onMouseMove={e => setMouseP([e.nativeEvent.offsetX, e.nativeEvent.offsetY])}
+        onMouseDown={e => {
+          e.stopPropagation()
+          setShowTimePath(true)
+        }}
+        onMouseUp={e => {
+          e.stopPropagation()
+          setShowTimePath(false)
+          setPrevBegin({})
+        }}
       >
         {
           _.isArray(record) &&
@@ -120,7 +137,8 @@ function FlowChart(props) {
               <div key={obj.id} style={obj.style} className="comp__flow-chart__obj-wrap" >
                 <div
                   contentEditable
-                  onInput={e => console.log(e.target.innerText)} // 修改textContent
+                  suppressContentEditableWarning // 避免因为contentEditable产生的warn
+                  onBlur={e => handleUpate(obj.id, e.target.textContent)} // 修改textContent
                   id={obj.id}
                   style={{ width: '100%', height: '100%' }}
                   draggable={true}
@@ -133,6 +151,10 @@ function FlowChart(props) {
                       className={`comp__flow-chart_obj-point ${key}`} 
                       onMouseDown={() => handleMouseDown(obj.id, key)}
                       onMouseUp={() => handleMouseUp(obj.id, key)}
+                      onMouseMove={e => {
+                        e.stopPropagation()
+                        setMouseP([])
+                      }}
                     />
                   ))
                 }
@@ -160,11 +182,19 @@ function FlowChart(props) {
                   startP.length > 0 &&
                   _.isArray(endP) &&
                   endP.length > 0 &&
-                  <Path startP={startP} endP={endP} isBottomToTop={[Position.top, Position.bottom].includes(path.beginPosition)} />
+                  <Path startP={startP} endP={endP} isToBottom={[Position.top, Position.bottom].includes(path.endPosition)} />
                 }
               </Fragment>
             )
           })
+        }
+        {
+          // 一条描绘鼠标即将连接的path线条
+          showTimePath &&
+          !_.isEmpty(prevBegin) &&
+          _.isArray(mouseP) &&
+          mouseP.length > 0 &&
+          <Path startP={getPosition(record, prevBegin.beginID, prevBegin.beginPosition)} endP={mouseP} />
         }
       </div>
     </div>

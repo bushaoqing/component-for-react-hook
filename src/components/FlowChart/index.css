@@ -11,7 +11,10 @@
 
 /* 每个div的上下左右4个点 */
 .comp__flow-chart__obj-wrap {
-  position: relative;
+  position: absolute;
+  display: inline-block;
+  color: #fff;
+  box-sizing: border-box;
 }
 
 .comp__flow-chart_obj-point {

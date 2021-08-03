@@ -27,7 +27,7 @@ function Path(props) {
     position.x4 = +endP[0]
     position.y4 = +endP[1]
 
-    if (props.isBottomToTop) {
+    if (props.isToBottom) {
       position.x2 = +startP[0]
       position.y2 = (+endP[1] + +startP[1]) / 2
       position.x3 = +endP[0]
@@ -84,13 +84,13 @@ function Path(props) {
 Path.propTypes = {
   startP: PropTypes.array, // 线段开始坐标（相对于FlowChart组件的div，取相对位置）
   endP: PropTypes.array, // 线段结束坐标
-  isBottomToTop: PropTypes.bool
+  isToBottom: PropTypes.bool
 }
 
 Path.defaultProps = {
   startP: [0, 0],
   endP: [0, 0],
-  isBottomToTop: true
+  isToBottom: true
 }
 
 export default Path

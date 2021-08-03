@@ -899,3 +899,24 @@ export default function TableDemo() {
 }
 ````
 ![Image 这是Table组件案例图片](https://github.com/bushaoqing/react-components-with-hooks/blob/main/readmeImg/table.png)
+
+### 24、流程图组件（可编辑、可拖动）
+````javascript
+import FlowChart from '../components/FlowChart'
+
+export default function SvgDemo() {
+
+  return (
+    <>
+      <FlowChart
+        width={1000}
+        height={600}
+        style={{
+          border: '1px solid pink'
+        }}
+      />
+    </>
+  )
+}
+````
+![Image 这是流程图组件案例图片](https://github.com/bushaoqing/react-components-with-hooks/blob/main/readmeImg/svg.png)
