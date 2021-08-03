@@ -47,7 +47,7 @@ function FlowChart(props) {
         var index = event.dataTransfer.getData("index")
         var ID = event.dataTransfer.getData("ID")
         // 更新id对应的position
-        if (!_.isEmpty(record[index]) && _.isEqual(record[index].id, +ID)) {
+        if (!_.isEmpty(record[index]) && _.isEqual(+record[index].id, +ID)) {
           let cloneRecord = _.cloneDeep(record)
           cloneRecord[index].style.left = left
           cloneRecord[index].style.top = top
