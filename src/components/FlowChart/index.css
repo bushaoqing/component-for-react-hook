@@ -9,6 +9,10 @@
   padding: 4px;
 }
 
+.comp__flow-chart-wrap_body {
+  background: url('./img/dot-bg.png') repeat;
+}
+
 /* 每个div的上下左右4个点 */
 .comp__flow-chart__obj-wrap {
   position: absolute;
