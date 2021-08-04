@@ -117,7 +117,9 @@ function FlowChart(props) {
         }}
         onDrop={e => handleDrop(e)}
         onDragOver={e => e.preventDefault()}
-        onMouseMove={e => setMouseP([e.nativeEvent.offsetX, e.nativeEvent.offsetY])}
+        onMouseMove={e => {
+          if (showTimePath) setMouseP([e.nativeEvent.offsetX, e.nativeEvent.offsetY])}
+        }
         onMouseDown={e => {
           e.stopPropagation()
           setShowTimePath(true)
@@ -134,13 +136,19 @@ function FlowChart(props) {
           record.map((obj, index) => {
             
             return (
-              <div key={obj.id} style={obj.style} className="comp__flow-chart__obj-wrap" >
+              <div 
+                key={obj.id} 
+                style={obj.style} 
+                className="comp__flow-chart__obj-wrap" 
+                onMouseEnter={() => setShowTimePath(false)}
+                onMouseLeave={() => setShowTimePath(true)}
+              >
                 <div
                   contentEditable
                   suppressContentEditableWarning // 避免因为contentEditable产生的warn
                   onBlur={e => handleUpate(obj.id, e.target.textContent)} // 修改textContent
                   id={obj.id}
-                  style={{ width: '100%', height: '100%' }}
+                  className="comp__flow-chart__obj-wrap__div"
                   draggable={true}
                   onDragStart={e => handleDragStart(e, obj, index)}
                 >{obj.textContent}</div>
