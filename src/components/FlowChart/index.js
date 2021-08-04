@@ -174,6 +174,7 @@ function FlowChart(props) {
           e.stopPropagation()
           setShowTimePath(false)
           setPrevBegin({})
+          setMouseP([])
         }}
       >
         {
