@@ -76,8 +76,8 @@ function FlowChart(props) {
 
     // 结束点的id不能和出发点一样（表示不同的div相连）
     let notSameNode = prevBegin.beginID !== id
-    // 当前的连线不存在（不重复）
-    let notHave = !pathArr.some(path => path.beginID === prevBegin.beginID && path.endID === id)
+    // 两个div之间有且仅有一条连线
+    let notHave = !pathArr.some(path => (path.beginID === prevBegin.beginID && path.endID === id) || (path.beginID === id && path.endID === prevBegin.beginID))
     if (prevBegin.beginID && id && notSameNode && notHave) {
       let clonePathArr = _.cloneDeep(pathArr)
       clonePathArr.push({
