@@ -26,21 +26,21 @@ export function getPosition(record, id, position) {
   switch (position) {
     case Position.top:
       x = left + width / 2
-      y = top - 4
+      y = top
       break;
 
     case Position.right:
-      x = left + width + 4
+      x = left + width
       y = top + height / 2
       break;
 
     case Position.bottom:
       x = left + width / 2
-      y = top + height + 4
+      y = top + height
       break;
 
     case Position.left:
-      x = left - 4
+      x = left
       y = top + height / 2
       break;
   

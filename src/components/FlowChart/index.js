@@ -13,6 +13,7 @@ function FlowChart(props) {
   const [prevBegin, setPrevBegin] = useState({}) // 临时存储出发点
   const [mouseP, setMouseP] = useState([]) // 时刻记录鼠标的位置
   const [showTimePath, setShowTimePath] = useState(false) // 时刻记录鼠标的位置
+  const [showPoint, setShowPoint] = useState(false) // 鼠标悬浮出现上下左右4个连线的点
 
   function handleDrop(event) {
     // console.log('handleDrop: ', event)
@@ -72,7 +73,7 @@ function FlowChart(props) {
   }
 
   function handleMouseUp(id, position) {
-    // console.log(id, position, prevBegin);
+    // console.log('handleMouseUp: ', id, position, prevBegin);
 
     // 结束点的id不能和出发点一样（表示不同的div相连）
     let notSameNode = prevBegin.beginID !== id
@@ -143,8 +144,14 @@ function FlowChart(props) {
                 key={obj.id} 
                 style={obj.style} 
                 className="comp__flow-chart__obj-wrap" 
-                onMouseEnter={() => setShowTimePath(false)}
-                onMouseLeave={() => setShowTimePath(true)}
+                onMouseEnter={() => {
+                  setShowTimePath(false)
+                  setShowPoint(true)
+                }}
+                onMouseLeave={() => {
+                  setShowTimePath(true)
+                  setShowPoint(false)
+                }}
               >
                 <div
                   contentEditable
@@ -156,6 +163,7 @@ function FlowChart(props) {
                   onDragStart={e => handleDragStart(e, obj, index)}
                 >{obj.textContent}</div>
                 {
+                  showPoint &&
                   ['top', 'right', 'bottom', 'left'].map(key => (
                     <span 
                       key={key}

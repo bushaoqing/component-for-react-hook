@@ -17,6 +17,8 @@
   width: 100%;
   height: 100%;
   outline: none;
+  user-select: none;
+  overflow: overlay;
 }
 
 /* 每个div的上下左右4个点 */
@@ -25,6 +27,7 @@
   display: inline-block;
   color: #fff;
   box-sizing: border-box;
+  user-select: none;
 }
 
 .comp__flow-chart_obj-point {
