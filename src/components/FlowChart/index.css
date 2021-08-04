@@ -83,3 +83,34 @@
 .comp__flow-chart_obj-point.left:hover {
   transform: translateY(-50%) scale(1.5);
 }
+
+.comp__flow-chart_obj-delete-icon {
+  position: absolute;
+  right: -8px;
+  top: -8px;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: url('./img/cancel.png') no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.comp__flow-chart_obj-delete-icon:hover {
+  background: url('./img/cancel_hover.png') no-repeat;
+  background-size: cover;
+  background-color: #fff;
+}
+
+
+/*定义滚动条高宽及背景
+ 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar
+{
+  width: 1px;
+  height: 1px;
+  background-color: #F5F5F5;
+}
+ 

@@ -9,14 +9,16 @@ import './index.css'
 
 function FlowChart(props) {
   let { width, height, style } = props
-  const [record, setRecord] = useState([]) // 存储数据
-  const [pathArr, setPathArr] = useState([])
+  const [record, setRecord] = useState([]) // 存储数据（界面的div信息）
+  const [pathArr, setPathArr] = useState([]) // 存储的连线（一般从接口拿取，然后组合成自己想要的样子）
   const [prevBegin, setPrevBegin] = useState({}) // 临时存储出发点
   const [mouseP, setMouseP] = useState([]) // 时刻记录鼠标的位置
   const [showTimePath, setShowTimePath] = useState(false) // 是否显示动态的连线
-  const [showPoint, setShowPoint] = useState(false) // 鼠标悬浮出现上下左右4个连线的点
-  const [visible, setVisible] = useState(false)
-  const [curClickPath, setCurClickPath] = useState({})
+  const [isEnterDiv, setIsEnterDiv] = useState(false) // 动态连线的一个优化项
+  const [visible, setVisible] = useState(false) // 删除连线是否显示确认弹窗
+  const [curClickPath, setCurClickPath] = useState({}) // 存储当前点击的连线的信息
+  const [curEnterDivID, setCurEnterDivID] = useState('') // 存储当前鼠标进入的div的id，用于点的显隐
+  const [isDeletePath, setIsDeletePath] = useState(false) // 是否是删除连线
 
   function handleDrop(event) {
     // console.log('handleDrop: ', event)
@@ -102,17 +104,44 @@ function FlowChart(props) {
       setRecord(cloneRecord)
     }
   }
+
+  // 删除连线
+  function onDeletePath(list = []) {
+    let clonePathArr = _.cloneDeep(pathArr)
+    
+    list.forEach(l => {
+      let index = clonePathArr.findIndex(p => p.beginID === l.beginID && p.endID === l.endID)
+      if (index !== -1) {
+        clonePathArr.splice(index, 1)
+      }
+    })
+
+    setPathArr(clonePathArr)
+  }
+
+  // 删除DIV
+  function onDeleteDiv() {
+    // 1、删除div上的连线
+    let delArr = pathArr.filter(p => [p.beginID, p.endID].includes(curEnterDivID))
+    if (delArr.length) onDeletePath(delArr)
+
+    // 2、删除DIV
+    let cloneRecord = _.cloneDeep(record)
+    let delIndex = cloneRecord.findIndex(r => r.id === curEnterDivID)
+    if (delIndex !== -1) {
+      cloneRecord.splice(delIndex, 1)
+      setRecord(cloneRecord)
+    }
+  }
   
   // 删除此条连线
   function handleSubmit() {
-    setVisible(false)
-    let clonePathArr = _.cloneDeep(pathArr)
-    let index = clonePathArr.findIndex(p => p.beginID === curClickPath.beginID && p.endID === curClickPath.endID)
-
-    if (index !== -1) {
-      clonePathArr.splice(index, 1)
-      setPathArr(clonePathArr)
+    if (isDeletePath) {
+      onDeletePath([curClickPath])
+    } else {
+      onDeleteDiv()
     }
+    setVisible(false)
   }
 
   return (
@@ -135,7 +164,7 @@ function FlowChart(props) {
         onDrop={e => handleDrop(e)}
         onDragOver={e => e.preventDefault()}
         onMouseMove={e => {
-          if (showTimePath && !showPoint) setMouseP([e.nativeEvent.offsetX, e.nativeEvent.offsetY])}
+          if (showTimePath && !isEnterDiv) setMouseP([e.nativeEvent.offsetX, e.nativeEvent.offsetY])}
         }
         onMouseDown={e => {
           e.stopPropagation()
@@ -157,8 +186,11 @@ function FlowChart(props) {
                 key={obj.id} 
                 style={obj.style} 
                 className="comp__flow-chart__obj-wrap" 
-                onMouseEnter={() => setShowPoint(true)}
-                onMouseLeave={() => setShowPoint(false)}
+                onMouseEnter={() => {
+                  setIsEnterDiv(true)
+                  setCurEnterDivID(obj.id)
+                }}
+                onMouseLeave={() => setIsEnterDiv(false)}
                 onMouseUp={() => setMouseP([])} // 动态线消失
               >
                 <div
@@ -171,7 +203,8 @@ function FlowChart(props) {
                   onDragStart={e => handleDragStart(e, obj, index)}
                 >{obj.textContent}</div>
                 {
-                  showPoint &&
+                  isEnterDiv &&
+                  obj.id === curEnterDivID &&
                   ['top', 'right', 'bottom', 'left'].map(key => (
                     <span 
                       key={key}
@@ -180,6 +213,14 @@ function FlowChart(props) {
                       onMouseUp={() => handleMouseUp(obj.id, key)}
                     />
                   ))
+                }
+                {
+                  isEnterDiv &&
+                  obj.id === curEnterDivID &&
+                  <span className='comp__flow-chart_obj-delete-icon' onClick={() => {
+                    setVisible(true)
+                    setIsDeletePath(false)
+                  }} />
                 }
               </div>
             )
@@ -208,6 +249,7 @@ function FlowChart(props) {
                   <Path startP={startP} endP={endP} isToBottom={[Position.top, Position.bottom].includes(path.endPosition)} onClick={() => {
                     setVisible(true)
                     setCurClickPath(path)
+                    setIsDeletePath(true)
                   }} />
                 }
               </Fragment>
@@ -232,10 +274,15 @@ function FlowChart(props) {
           onSubmit={handleSubmit}
           onCancel={() => setVisible(false)}
         >
-          <h3 style={{ color: 'red' }}>确认删除此连线吗？</h3>
-          <h4>{ `${record.filter(r => r.id === curClickPath.beginID)[0] && record.filter(r => r.id === curClickPath.beginID)[0].textContent}
-          --> 
-          ${record.filter(r => r.id === curClickPath.endID)[0] && record.filter(r => r.id === curClickPath.endID)[0].textContent}` }</h4>
+          <h3 style={{ color: 'red' }}>{`确认删除此${isDeletePath ? '连线' : '节点'}吗？`}</h3>
+          {
+            isDeletePath ?
+            <h4>{ `${record.filter(r => r.id === curClickPath.beginID)[0] && record.filter(r => r.id === curClickPath.beginID)[0].textContent}
+            --> 
+            ${record.filter(r => r.id === curClickPath.endID)[0] && record.filter(r => r.id === curClickPath.endID)[0].textContent}` }</h4>
+            :
+            <h4>{ `节点名称：${ record.filter(r => r.id === curEnterDivID)[0] && record.filter(r => r.id === curEnterDivID)[0].textContent || '' }` }</h4>
+          }
         </Dialog>
       }
     </div>
