@@ -4,6 +4,7 @@ import Path from './Path'
 import Tools from './Tools'
 import _ from 'lodash'
 import { getPosition, Position } from './util/common'
+import Dialog from '../Dialog'
 import './index.css'
 
 function FlowChart(props) {
@@ -12,8 +13,10 @@ function FlowChart(props) {
   const [pathArr, setPathArr] = useState([])
   const [prevBegin, setPrevBegin] = useState({}) // 临时存储出发点
   const [mouseP, setMouseP] = useState([]) // 时刻记录鼠标的位置
-  const [showTimePath, setShowTimePath] = useState(false) // 时刻记录鼠标的位置
+  const [showTimePath, setShowTimePath] = useState(false) // 是否显示动态的连线
   const [showPoint, setShowPoint] = useState(false) // 鼠标悬浮出现上下左右4个连线的点
+  const [visible, setVisible] = useState(false)
+  const [curClickPath, setCurClickPath] = useState({})
 
   function handleDrop(event) {
     // console.log('handleDrop: ', event)
@@ -99,6 +102,18 @@ function FlowChart(props) {
       setRecord(cloneRecord)
     }
   }
+  
+  // 删除此条连线
+  function handleSubmit() {
+    setVisible(false)
+    let clonePathArr = _.cloneDeep(pathArr)
+    let index = clonePathArr.findIndex(p => p.beginID === curClickPath.beginID && p.endID === curClickPath.endID)
+
+    if (index !== -1) {
+      clonePathArr.splice(index, 1)
+      setPathArr(clonePathArr)
+    }
+  }
 
   return (
     <div className='comp__flow-chart-wrap'>
@@ -113,16 +128,14 @@ function FlowChart(props) {
       <div 
         className='comp__flow-chart-wrap_body' 
         style={{
-          position: 'relative',
           width,
           height,
-          boxSizing: 'border-box',
           ...style
         }}
         onDrop={e => handleDrop(e)}
         onDragOver={e => e.preventDefault()}
         onMouseMove={e => {
-          if (showTimePath) setMouseP([e.nativeEvent.offsetX, e.nativeEvent.offsetY])}
+          if (showTimePath && !showPoint) setMouseP([e.nativeEvent.offsetX, e.nativeEvent.offsetY])}
         }
         onMouseDown={e => {
           e.stopPropagation()
@@ -144,14 +157,9 @@ function FlowChart(props) {
                 key={obj.id} 
                 style={obj.style} 
                 className="comp__flow-chart__obj-wrap" 
-                onMouseEnter={() => {
-                  setShowTimePath(false)
-                  setShowPoint(true)
-                }}
-                onMouseLeave={() => {
-                  setShowTimePath(true)
-                  setShowPoint(false)
-                }}
+                onMouseEnter={() => setShowPoint(true)}
+                onMouseLeave={() => setShowPoint(false)}
+                onMouseUp={() => setMouseP([])} // 动态线消失
               >
                 <div
                   contentEditable
@@ -170,10 +178,6 @@ function FlowChart(props) {
                       className={`comp__flow-chart_obj-point ${key}`} 
                       onMouseDown={() => handleMouseDown(obj.id, key)}
                       onMouseUp={() => handleMouseUp(obj.id, key)}
-                      onMouseMove={e => {
-                        e.stopPropagation()
-                        setMouseP([])
-                      }}
                     />
                   ))
                 }
@@ -201,7 +205,10 @@ function FlowChart(props) {
                   startP.length > 0 &&
                   _.isArray(endP) &&
                   endP.length > 0 &&
-                  <Path startP={startP} endP={endP} isToBottom={[Position.top, Position.bottom].includes(path.endPosition)} />
+                  <Path startP={startP} endP={endP} isToBottom={[Position.top, Position.bottom].includes(path.endPosition)} onClick={() => {
+                    setVisible(true)
+                    setCurClickPath(path)
+                  }} />
                 }
               </Fragment>
             )
@@ -216,6 +223,21 @@ function FlowChart(props) {
           <Path startP={getPosition(record, prevBegin.beginID, prevBegin.beginPosition)} endP={mouseP} />
         }
       </div>
+      {
+        visible &&
+        <Dialog
+          title='删除'
+          height={250}
+          width={400}
+          onSubmit={handleSubmit}
+          onCancel={() => setVisible(false)}
+        >
+          <h3 style={{ color: 'red' }}>确认删除此连线吗？</h3>
+          <h4>{ `${record.filter(r => r.id === curClickPath.beginID)[0] && record.filter(r => r.id === curClickPath.beginID)[0].textContent}
+          --> 
+          ${record.filter(r => r.id === curClickPath.endID)[0] && record.filter(r => r.id === curClickPath.endID)[0].textContent}` }</h4>
+        </Dialog>
+      }
     </div>
   )
 }
