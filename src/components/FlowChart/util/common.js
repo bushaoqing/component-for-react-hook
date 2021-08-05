@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 export const Position = {
   top: 'top',
   right: 'right',
@@ -49,4 +51,19 @@ export function getPosition(record, id, position) {
   }
 
   return [x, y]
+}
+
+// 非空
+export function validateTrim(val) {
+  return !!_.trim(val)
+}
+
+// 最小长度
+export function minLength(val, number) {
+  return _.trim(val).length >= number
+}
+
+// 最小值
+export function minValue(val, number) {
+  return _.toNumber(val) >= number
 }

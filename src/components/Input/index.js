@@ -62,7 +62,7 @@ function Input(props) {
 Input.propTypes = {
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   type: PropTypes.string,
   disabled: PropTypes.bool,
   clearable: PropTypes.bool,

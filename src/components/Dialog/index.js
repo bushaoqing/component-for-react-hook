@@ -8,7 +8,11 @@ function Dialog(props) {
 
   return ReactDOM.createPortal((
     <div className='comp-dialog__wrap' onClick={props.onCancel}>
-      <div className='comp-dialog__center-box__wrap' style={{ width: props.width, height: props.height }} onClick={e => e.stopPropagation()}>
+      <div 
+        className='comp-dialog__center-box__wrap' 
+        style={{ width: props.width, height: props.height, paddingBottom: (props.hideCancel && props.hideSubmit) ? 0 : 62 }} 
+        onClick={e => e.stopPropagation()}
+      >
         <div className='comp-dialog__center-box__header'>
           <span className='comp-dialog__center-box__header-title'>{props.title}</span>
           <i className='comp-dialog__center-box__header-cancel-icon' onClick={props.onCancel} />

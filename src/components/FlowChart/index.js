@@ -5,6 +5,8 @@ import Tools from './Tools'
 import _ from 'lodash'
 import { getPosition, Position } from './util/common'
 import Dialog from '../Dialog'
+import DeleteDialog from './Tools/DeleteDialog'
+import EditDialog from './Tools/EditDialog'
 import './index.css'
 
 function FlowChart(props) {
@@ -19,9 +21,9 @@ function FlowChart(props) {
   const [curClickPath, setCurClickPath] = useState({}) // 存储当前点击的连线的信息
   const [curEnterDivID, setCurEnterDivID] = useState('') // 存储当前鼠标进入的div的id，用于点的显隐
   const [isDeletePath, setIsDeletePath] = useState(false) // 是否是删除连线
+  const [editVisible, setEditVisible] = useState(false) // 是否显示编辑div弹窗
 
   function handleDrop(event) {
-    // console.log('handleDrop: ', event)
     event.preventDefault()
     if (event.target.className === "comp__flow-chart-wrap_body") {
       var isCreate = event.dataTransfer.getData("isCreate") // 从工具栏拖过来的需要新建，画布中的只需要移动
@@ -143,6 +145,12 @@ function FlowChart(props) {
     }
     setVisible(false)
   }
+  
+  // 编辑div
+  function handleEditSubmit(newRecord) {
+    setRecord(newRecord)
+    setEditVisible(false)
+  }
 
   return (
     <div className='comp__flow-chart-wrap'>
@@ -202,6 +210,7 @@ function FlowChart(props) {
                   className="comp__flow-chart__obj-wrap__div"
                   draggable={true}
                   onDragStart={e => handleDragStart(e, obj, index)}
+                  onDoubleClick={() => setEditVisible(true)}
                 >{obj.textContent}</div>
                 {
                   isEnterDiv &&
@@ -268,23 +277,23 @@ function FlowChart(props) {
       </div>
       {
         visible &&
-        <Dialog
-          title='删除'
-          height={250}
-          width={400}
-          onSubmit={handleSubmit}
-          onCancel={() => setVisible(false)}
-        >
-          <h3 style={{ color: 'red' }}>{`确认删除此${isDeletePath ? '连线' : '节点'}吗？`}</h3>
-          {
-            isDeletePath ?
-            <h4>{ `${record.filter(r => r.id === curClickPath.beginID)[0] && record.filter(r => r.id === curClickPath.beginID)[0].textContent}
-            --> 
-            ${record.filter(r => r.id === curClickPath.endID)[0] && record.filter(r => r.id === curClickPath.endID)[0].textContent}` }</h4>
-            :
-            <h4>{ `节点名称：${ record.filter(r => r.id === curEnterDivID)[0] && record.filter(r => r.id === curEnterDivID)[0].textContent || '' }` }</h4>
-          }
-        </Dialog>
+        <DeleteDialog
+          isDeletePath={isDeletePath}
+          handleSubmit={handleSubmit}
+          setVisible={setVisible}
+          record={record}
+          curClickPath={curClickPath}
+          curEnterDivID={curEnterDivID}
+        />
+      }
+      {
+        editVisible &&
+        <EditDialog
+          handleSubmit={handleEditSubmit}
+          setVisible={setEditVisible}
+          record={record}
+          curEnterDivID={curEnterDivID}
+        />
       }
     </div>
   )
