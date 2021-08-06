@@ -5,4 +5,9 @@
   cursor: pointer;
   user-select: 'none';
   color: #fff;
+  text-align: center;
+}
+
+.comp__flow-chart_tools_div.cycle {
+  border-radius: 50%;
 }

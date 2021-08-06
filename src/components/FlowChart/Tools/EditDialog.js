@@ -14,6 +14,9 @@ const Rules = {
   bgColor: [
     { required: true, name: '背景颜色', msg: '必填', func: v => validateTrim(v) }
   ],
+  color: [
+    { required: true, name: '字体颜色', msg: '必填', func: v => validateTrim(v) }
+  ],
   width: [
     { required: true, name: '宽度', msg: '必填', func: v => validateTrim(v) },
     { msg: '最小宽度为40', func: v => minValue(v, 40) }
@@ -31,6 +34,7 @@ export default function EditDialog(props) {
   let initialFormData = {
     text: '',
     bgColor: '',
+    color: '',
     width: '',
     height: ''
   }
@@ -48,6 +52,7 @@ export default function EditDialog(props) {
     initialFormData = {
       text: curDiv.textContent,
       bgColor: curDiv.style && curDiv.style.backgroundColor || 'pink',
+      color: curDiv.style && curDiv.style.color || '#fff',
       width: curDiv.style && curDiv.style.width || 40,
       height: curDiv.style && curDiv.style.height || 20,
     }
@@ -71,7 +76,8 @@ export default function EditDialog(props) {
           ...record[index].style,
           width: _.toNumber(formData.width),
           height: _.toNumber(formData.height),
-          backgroundColor: formData.bgColor
+          backgroundColor: formData.bgColor,
+          color: formData.color
         },
         textContent: formData.text
       }
@@ -100,6 +106,9 @@ export default function EditDialog(props) {
         </Form.item>
         <Form.item name="bgColor">
           <Input value={formData.bgColor} onChange={val => updateFormData('bgColor', val)} />
+        </Form.item>
+        <Form.item name="color">
+          <Input value={formData.color} onChange={val => updateFormData('color', val)} />
         </Form.item>
         <Form.item name="width">
           <Input value={formData.width} type='number' onChange={val => updateFormData('width', val)} />

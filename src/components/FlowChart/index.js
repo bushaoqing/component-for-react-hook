@@ -34,18 +34,20 @@ function FlowChart(props) {
       
       // 创建一个div
       if (isCreate) {
-        var color = event.dataTransfer.getData("color")
+        var text = event.dataTransfer.getData("text")
+        var style = event.dataTransfer.getData("style")
+        // console.log('style: ', JSON.parse(style));
         let obj = {
           id: Date.now(), // 生成唯一标识id，用于之后移动元素
           style: {
+            ...JSON.parse(style),
             left: left,
             top: top,
-            backgroundColor: color,
             padding: 6,
             width: 60,
             height: 60
           },
-          textContent: color
+          textContent: text
         }
 
         setRecord(v => [...v, obj])
@@ -204,6 +206,9 @@ function FlowChart(props) {
               >
                 <div
                   contentEditable
+                  style={{
+                    width: obj.style.width
+                  }} 
                   suppressContentEditableWarning // 避免因为contentEditable产生的warn
                   onBlur={e => handleUpate(obj.id, e.target.textContent)} // 修改textContent
                   id={obj.id}
@@ -227,10 +232,13 @@ function FlowChart(props) {
                 {
                   isEnterDiv &&
                   obj.id === curEnterDivID &&
-                  <span className='comp__flow-chart_obj-delete-icon' onClick={() => {
-                    setVisible(true)
-                    setIsDeletePath(false)
-                  }} />
+                  <span 
+                    className='comp__flow-chart_obj-delete-icon' 
+                    onClick={() => {
+                      setVisible(true)
+                      setIsDeletePath(false)
+                    }}
+                  />
                 }
               </div>
             )

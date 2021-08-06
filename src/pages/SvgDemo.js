@@ -5,8 +5,8 @@ export default function SvgDemo() {
   return (
     <>
       <FlowChart
-        width={1000}
-        height={600}
+        width={1400}
+        height={1200}
         style={{
           border: '1px solid pink'
         }}
