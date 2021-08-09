@@ -4,7 +4,6 @@ import Path from './Path'
 import Tools from './Tools'
 import _ from 'lodash'
 import { getPosition, Position } from './util/common'
-import Dialog from '../Dialog'
 import DeleteDialog from './Tools/DeleteDialog'
 import EditDialog from './Tools/EditDialog'
 import './index.css'
@@ -22,6 +21,9 @@ function FlowChart(props) {
   const [curEnterDivID, setCurEnterDivID] = useState('') // 存储当前鼠标进入的div的id，用于点的显隐
   const [isDeletePath, setIsDeletePath] = useState(false) // 是否是删除连线
   const [editVisible, setEditVisible] = useState(false) // 是否显示编辑div弹窗
+  const [canvasScale, setcanvasScale] = useState(1) // 画布的缩放:transform: scale(1)
+  const [moveP, setmoveP] = useState([0, 0]) // 移动画布偏移量
+  const [canMoveP, setcanMoveP] = useState(false) // 是否能移动画布
 
   function handleDrop(event) {
     event.preventDefault()
@@ -154,6 +156,21 @@ function FlowChart(props) {
     setEditVisible(false)
   }
 
+  // 滚轮事件
+  function handleWheel(e) {
+    e.stopPropagation()
+    let deltaY = e.deltaY || 0
+    let granularity = 0.02
+    // 放大画布
+    if (deltaY > 0) {
+      setcanvasScale(s => s > 2 ? (2 + granularity) : (s + granularity))
+    }
+    // 缩小画布
+    if (deltaY < 0) {
+      setcanvasScale(s => s < 0.4 ? (0.4 - granularity) : (s - granularity))
+    }
+  }
+
   return (
     <div className='comp__flow-chart-wrap'>
       <div 
@@ -164,124 +181,145 @@ function FlowChart(props) {
       >
         <Tools />
       </div>
-      <div 
-        className='comp__flow-chart-wrap_body' 
-        style={{
+        <div style={{
+          position: 'relative',
           width,
           height,
-          ...style
-        }}
-        onDrop={e => handleDrop(e)}
-        onDragOver={e => e.preventDefault()}
-        onMouseMove={e => {
-          if (showTimePath && !isEnterDiv) setMouseP([e.nativeEvent.offsetX, e.nativeEvent.offsetY])}
-        }
-        onMouseDown={e => {
-          e.stopPropagation()
-          setShowTimePath(true)
-        }}
-        onMouseUp={e => {
-          e.stopPropagation()
-          setShowTimePath(false)
-          setPrevBegin({})
-          setMouseP([])
-        }}
-      >
-        {
-          _.isArray(record) &&
-          record.length > 0 &&
-          record.map((obj, index) => {
-            
-            return (
-              <div 
-                key={obj.id} 
-                style={obj.style} 
-                className="comp__flow-chart__obj-wrap" 
-                onMouseEnter={() => {
-                  setIsEnterDiv(true)
-                  setCurEnterDivID(obj.id)
-                }}
-                onMouseLeave={() => setIsEnterDiv(false)}
-                onMouseUp={() => setMouseP([])} // 动态线消失
-              >
-                <div
-                  contentEditable
-                  style={{
-                    width: obj.style.width
-                  }} 
-                  suppressContentEditableWarning // 避免因为contentEditable产生的warn
-                  onBlur={e => handleUpate(obj.id, e.target.textContent)} // 修改textContent
-                  id={obj.id}
-                  className="comp__flow-chart__obj-wrap__div"
-                  draggable={true}
-                  onDragStart={e => handleDragStart(e, obj, index)}
-                  onDoubleClick={() => setEditVisible(true)}
-                >{obj.textContent}</div>
-                {
-                  isEnterDiv &&
-                  obj.id === curEnterDivID &&
-                  ['top', 'right', 'bottom', 'left'].map(key => (
+          ...style,
+          overflow: 'overlay'
+        }}>
+        <div 
+          className='comp__flow-chart-wrap_body' 
+          style={{
+            width,
+            height,
+            ...style,
+            border: 'none',
+            transform: `scale(${canvasScale})`,
+            left: moveP[0],
+            top: moveP[1],
+            cursor: canMoveP ? 'grabbing' : 'default'
+          }}
+          onWheel={e => handleWheel(e)}
+          onDrop={e => handleDrop(e)}
+          onDragOver={e => e.preventDefault()}
+          onMouseMove={e => {
+            if (canMoveP) setmoveP(arr => [arr[0]+e.movementX, arr[1]+e.movementY])
+            if (showTimePath && !isEnterDiv) setMouseP([e.nativeEvent.offsetX, e.nativeEvent.offsetY])}
+          }
+          onMouseDown={e => {
+            e.stopPropagation()
+            setcanMoveP(true)
+          }}
+          onMouseUp={e => {
+            e.stopPropagation()
+            setShowTimePath(false)
+            setPrevBegin({})
+            setMouseP([])
+            setcanMoveP(false)
+          }}
+        >
+          {
+            _.isArray(record) &&
+            record.length > 0 &&
+            record.map((obj, index) => {
+              
+              return (
+                <div 
+                  key={obj.id} 
+                  style={obj.style} 
+                  className="comp__flow-chart__obj-wrap" 
+                  onMouseEnter={() => {
+                    setIsEnterDiv(true)
+                    setCurEnterDivID(obj.id)
+                  }}
+                  onMouseLeave={() => setIsEnterDiv(false)}
+                  onMouseUp={() => setMouseP([])} // 动态线消失
+                  onMouseDown={e => {
+                    e.stopPropagation()
+                    setcanMoveP(false) 
+                    setShowTimePath(true)
+                  }}
+                >
+                  <div
+                    contentEditable
+                    style={{
+                      width: obj.style.width
+                    }} 
+                    suppressContentEditableWarning // 避免因为contentEditable产生的warn
+                    onBlur={e => handleUpate(obj.id, e.target.textContent)} // 修改textContent
+                    id={obj.id}
+                    className="comp__flow-chart__obj-wrap__div"
+                    draggable={true}
+                    onDragStart={e => handleDragStart(e, obj, index)}
+                    onDoubleClick={() => setEditVisible(true)}
+                  >{obj.textContent}</div>
+                  {
+                    isEnterDiv &&
+                    obj.id === curEnterDivID &&
+                    ['top', 'right', 'bottom', 'left'].map(key => (
+                      <span 
+                        key={key}
+                        className={`comp__flow-chart_obj-point ${key}`} 
+                        onMouseDown={() => handleMouseDown(obj.id, key)}
+                        onMouseUp={() => handleMouseUp(obj.id, key)}
+                      />
+                    ))
+                  }
+                  {
+                    isEnterDiv &&
+                    obj.id === curEnterDivID &&
                     <span 
-                      key={key}
-                      className={`comp__flow-chart_obj-point ${key}`} 
-                      onMouseDown={() => handleMouseDown(obj.id, key)}
-                      onMouseUp={() => handleMouseUp(obj.id, key)}
+                      className='comp__flow-chart_obj-delete-icon' 
+                      onClick={() => {
+                        setVisible(true)
+                        setIsDeletePath(false)
+                      }}
                     />
-                  ))
-                }
-                {
-                  isEnterDiv &&
-                  obj.id === curEnterDivID &&
-                  <span 
-                    className='comp__flow-chart_obj-delete-icon' 
-                    onClick={() => {
-                      setVisible(true)
-                      setIsDeletePath(false)
-                    }}
-                  />
-                }
-              </div>
-            )
-          })
-        }
-        {
-          _.isArray(pathArr) &&
-          pathArr.length > 0 &&
-          pathArr.map(path => {
-            let startP = []
-            let endP = []
-            if (!_.isEmpty(path)) {
-              let { beginID, beginPosition, endID, endPosition } = path
-              startP = getPosition(record, beginID, beginPosition)
-              endP = getPosition(record, endID, endPosition)
-            } 
-            // console.log('********** ', startP, endP, path);
+                  }
+                </div>
+              )
+            })
+          }
+          {
+            _.isArray(pathArr) &&
+            pathArr.length > 0 &&
+            pathArr.map(path => {
+              let startP = []
+              let endP = []
+              if (!_.isEmpty(path)) {
+                let { beginID, beginPosition, endID, endPosition } = path
+                startP = getPosition(record, beginID, beginPosition)
+                endP = getPosition(record, endID, endPosition)
+              } 
+              // console.log('********** ', startP, endP, path);
 
-            return (
-              <Fragment key={path.beginID + path.endID}>
-                {
-                  _.isArray(startP) &&
-                  startP.length > 0 &&
-                  _.isArray(endP) &&
-                  endP.length > 0 &&
-                  <Path startP={startP} endP={endP} isToBottom={[Position.top, Position.bottom].includes(path.endPosition)} onClick={() => {
-                    setVisible(true)
-                    setCurClickPath(path)
-                    setIsDeletePath(true)
-                  }} />
-                }
-              </Fragment>
-            )
-          })
-        }
-        {
-          // 一条描绘鼠标即将连接的path线条
-          showTimePath &&
-          !_.isEmpty(prevBegin) &&
-          _.isArray(mouseP) &&
-          mouseP.length > 0 &&
-          <Path startP={getPosition(record, prevBegin.beginID, prevBegin.beginPosition)} endP={mouseP} />
-        }
+              return (
+                <Fragment key={path.beginID + path.endID}>
+                  {
+                    _.isArray(startP) &&
+                    startP.length > 0 &&
+                    _.isArray(endP) &&
+                    endP.length > 0 &&
+                    <Path startP={startP} endP={endP} isToBottom={[Position.top, Position.bottom].includes(path.endPosition)} onClick={() => {
+                      setVisible(true)
+                      setCurClickPath(path)
+                      setIsDeletePath(true)
+                    }} />
+                  }
+                </Fragment>
+              )
+            })
+          }
+          {
+            // 一条描绘鼠标即将连接的path线条
+            showTimePath &&
+            !_.isEmpty(prevBegin) &&
+            _.isArray(mouseP) &&
+            mouseP.length > 0 &&
+            <Path startP={getPosition(record, prevBegin.beginID, prevBegin.beginPosition)} endP={mouseP} />
+          }
+        </div>
       </div>
       {
         visible &&
