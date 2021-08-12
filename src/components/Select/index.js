@@ -27,12 +27,22 @@ function Select(props) {
   }, [showOptions])
 
   function initailVal () {
-    let { value, options, config } = props
-    if (!props.isMultiple) value = [value] // 单选变为多选的处理方式
+    let { value, options, config, isMultiple } = props
+    if (!isMultiple) value = [value] // 单选变为多选的处理方式
 
-    let initArr = options.filter(i => value.includes(i[config.value]))
-    let initVal = initArr[0] && initArr[0][config.text] || ''
-    return [initVal]
+    let initArr = value.reduce((prev, valID) => { // 保证选择的项时追加到末尾，而不是按照options顺序排序的
+      let obj = options.find(i => _.isEqual(i[config.value], valID))
+      prev.push(obj)
+      return prev
+    }, [])
+
+    let initVal = []
+    if (!isMultiple) {
+      initVal = initArr[0] && [initArr[0][config.text]] || []
+    } else {
+      initVal = initArr.map(i => i[config.text])
+    }
+    return initVal
   }
 
   function onDocumentClick() {
@@ -66,8 +76,14 @@ function Select(props) {
 
       setInputValue(cloneInputVal)
 
+      if (!_.isArray(cloneInputVal)) return
       // 通过多选过滤出对应的obj、value数组
-      let curArr = props.options.filter(i => cloneInputVal.includes(i[text]))
+      // 保证选择的项时追加到末尾，而不是按照options顺序排序的
+      let curArr = cloneInputVal.reduce((prev, valText) => {
+        let obj = props.options.find(i => _.isEqual(i[text], valText))
+        prev.push(obj)
+        return prev
+      }, [])
       let curVal = curArr.map(i => i[value])
       props.onChange(curVal, curArr)
     } else { 
