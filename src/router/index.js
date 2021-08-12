@@ -13,6 +13,7 @@ import TabsDemo from "../pages/TabsDemo"
 import PopoverDemo from "../pages/PopoverDemo"
 import TableDemo from "../pages/TableDemo"
 import SvgDemo from "../pages/SvgDemo"
+import TreeDemo from "../pages/TreeDemo"
 
 // 侧边菜单栏
 const RouteMap = [
@@ -76,6 +77,10 @@ const RouteMap = [
         name: 'SvgDemo案例',
         path: '/SvgDemo',
         component: SvgDemo
+    }, {
+        name: 'TreeDemo案例',
+        path: '/TreeDemo',
+        component: TreeDemo
     }
 ]
 

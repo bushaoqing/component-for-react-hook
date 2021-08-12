@@ -1,0 +1,44 @@
+.comp-tree-wrap .group-has-children,
+.comp-tree-wrap .group-has-no-children {
+  line-height: 36px;
+  user-select: none;
+}
+
+.comp-tree-wrap .group-has-children {
+  display: inline-block;
+  width: 100%;
+}
+
+.comp-tree-wrap .group-has-children:hover,
+.comp-tree-wrap .group-has-no-children:hover {
+  cursor: pointer;
+  background: #e9eefd;
+}
+
+.comp-tree-wrap .group-has-children::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url(./img/tree_group@2x.png) no-repeat;
+  background-size: cover;
+  vertical-align: middle;
+}
+
+.comp-tree-wrap .group-has-children.expend::before {
+  transform: rotate(90deg);
+}
+
+.comp-tree-wrap .group-has-children.current,
+.comp-tree-wrap .group-has-no-children.current {
+  color: #265cf0;
+}
+
+.comp-tree-wrap {
+  height: 100%;
+}
+
+.comp-tree__body-wrap {
+  height: 88%;
+  overflow: auto;
+}

@@ -1,0 +1,27 @@
+.comp-empty__wrap {
+  height: 230px;
+  width: 100%;
+  background: #fff;
+  position: relative;
+}
+
+.comp-empty__center-img-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  display: inline-block;
+  width: 136px;
+  text-align: center;
+  color: #999;
+  font-size: 14px;
+}
+
+.comp-empty__center-img-wrap img {
+  background-size: cover;
+  display: inline-block;
+  width: 136px;
+  height: 136px;
+}
