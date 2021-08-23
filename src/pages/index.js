@@ -73,6 +73,7 @@ function InitPage() {
       <Radiobox
         value={radioboxVal}
         disabled={['A']}
+        labelWidth={140}
         options={[
           {id: 1, text: '我是A', value: 'A'},
           {id: 2, text: '我是B', value: 'B'},
@@ -84,6 +85,7 @@ function InitPage() {
       <Radiobox
         value={radioboxVal}
         disabled={['A']}
+        labelWidth={140}
         type="ori"
         options={[
           {id: 1, text: '我是A', value: 'A'},
