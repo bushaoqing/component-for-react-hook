@@ -80,6 +80,18 @@ function InitPage() {
         ]}
         onChange={val => setRadioboxVal(val)}
       />
+      <hr/>
+      <Radiobox
+        value={radioboxVal}
+        disabled={['A']}
+        type="ori"
+        options={[
+          {id: 1, text: '我是A', value: 'A'},
+          {id: 2, text: '我是B', value: 'B'},
+          {id: 3, text: '我是C', value: 'C'},
+        ]}
+        onChange={val => setRadioboxVal(val)}
+      />
 
       <hr/>
 

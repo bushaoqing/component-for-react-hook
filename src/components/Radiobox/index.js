@@ -20,7 +20,10 @@ function Radiobox(props) {
           return (
             <span 
               key={item.id || (item.value + index)}
-              className={`comp-radiobox__single-span ${curVal === item.value ? 'current' : ''} ${isDisabled ? 'disabled' : ''}`}
+              style={{
+                width: props.labelWidth
+              }}
+              className={`comp-radiobox__single-span ${props.type} ${curVal === item.value ? 'current' : ''} ${isDisabled ? 'disabled' : ''}`}
               onClick={() => {
                 if (isDisabled) return
                 setCurVal(item.value)
@@ -38,14 +41,18 @@ Radiobox.propTypes = {
   value: PropTypes.string,
   options: PropTypes.array,
   disabled: PropTypes.array,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  labelWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  type: PropTypes.string
 }
 
 Radiobox.defaultProps = {
   value: '',
   options: [],
   disabled: [],
-  onChange: _.noop
+  onChange: _.noop,
+  labelWidth: null,
+  type: ''
 }
 
 export default Radiobox

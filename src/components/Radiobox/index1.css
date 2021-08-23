@@ -1,20 +1,15 @@
 .comp-radiobox__single-span {
+  font-size: 14px;
   display: inline-block;
   height: 40px;
   line-height: 20px;
   box-sizing: border-box;
   padding: 10px 20px;
-  border: 1px solid #ddd;
   user-select: none;
-  font-size: 14px;
   position: relative;
 }
 
-.comp-radiobox__single-span.ori {
-  border: none;
-}
-
-.comp-radiobox__single-span.ori:before {
+.comp-radiobox__single-span:before {
   content: '';
   display: inline-block;
   width: 12px;
@@ -28,7 +23,7 @@
   top: 13px;
 }
 
-.comp-radiobox__single-span.ori::after {
+.comp-radiobox__single-span::after {
   content: '';
   display: inline-block;
   width: 8px;
@@ -39,34 +34,18 @@
   left: 3px;
   top: 16px;
 }
-.comp-radiobox__single-span.ori.current::after {
+.comp-radiobox__single-span.current::after {
   background-color: #0052d9;
 }
 
 .comp-radiobox__single-span:hover {
   cursor: pointer;
-  background: #eee;
-}
-
-.comp-radiobox__single-span.ori:hover {
-  background: transparent;
 }
 
 .comp-radiobox__single-span.current.disabled {
-  background: #d4e3fc;
-  color: #fff;
+  color: #999;
 }
 .comp-radiobox__single-span.disabled {
-  background: #eee;
-  color: #999;
-}
-
-.comp-radiobox__single-span.ori.current.disabled {
-  background: transparent;
-  color: #999;
-}
-.comp-radiobox__single-span.ori.disabled {
-  background: transparent;
   color: #999;
 }
 
@@ -76,12 +55,6 @@
 }
 
 .comp-radiobox__single-span.current {
-  background: #0052d9;
-  color: #fff;
-}
-
-.comp-radiobox__single-span.ori.current {
-  background-color: transparent;
   color: #0052d9;
 }
 
