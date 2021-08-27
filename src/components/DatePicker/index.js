@@ -182,7 +182,7 @@ function DatePicker(props) {
               <span 
                 className="comp__date-picker__date-range-btn left-year-btn"
                 onClick={() => {
-                  setYear(--year)
+                  setYear(year => --year)
                   setBeforeYear(beforeYear - 10)
                 }}
               ></span>
@@ -193,8 +193,8 @@ function DatePicker(props) {
                   className="comp__date-picker__date-range-btn left-month-btn"
                   onClick={() => {
                     let sholdYearDown = month - 1 === -1
-                    setMonth(sholdYearDown ? 11 : --month)
-                    setYear(sholdYearDown ? --year : year)
+                    setMonth(month => sholdYearDown ? 11 : --month)
+                    setYear(year => sholdYearDown ? --year : year)
                   }}
                 ></span>
               }
@@ -224,8 +224,8 @@ function DatePicker(props) {
                   className="comp__date-picker__date-range-btn right-month-btn"
                   onClick={() => {
                     let sholdYearUp = month + 1 === 12
-                    setMonth(sholdYearUp ? 0 : ++month)
-                    setYear(sholdYearUp? ++year : year)
+                    setMonth(month => sholdYearUp ? 0 : ++month)
+                    setYear(year => sholdYearUp? ++year : year)
                   }}
                 ></span>
               }
@@ -234,7 +234,7 @@ function DatePicker(props) {
                 <span
                   className="comp__date-picker__date-range-btn right-year-btn"
                   onClick={() => {
-                    setYear(++year)
+                    setYear(year => ++year)
                     setBeforeYear(beforeYear + 10)
                   }}
                 ></span>
@@ -310,7 +310,7 @@ function DatePicker(props) {
                       key={month}
                       className="comp__date-picker__ten-years-item"
                       onClick={() => {
-                        setMonth(month - 1)
+                        setMonth(month => month - 1)
                         setShowMonthBtn(false)
                       }}
                     >{month + '月'}</span>
@@ -329,7 +329,7 @@ function DatePicker(props) {
                   <span 
                     className="comp__date-picker__date-range-btn"
                     onClick={() => {
-                      setYear(--year)
+                      setYear(year => --year)
                       setBeforeYear(beforeYear - 10)
                     }}
                   ></span>
@@ -342,8 +342,8 @@ function DatePicker(props) {
                     className="comp__date-picker__date-range-btn left-month-btn"
                     onClick={() => {
                       let sholdYearDown = month - 1 === -1
-                      setMonth(sholdYearDown ? 11 : --month)
-                      setYear(sholdYearDown ? --year : year)
+                      setMonth(month => sholdYearDown ? 11 : --month)
+                      setYear(year => sholdYearDown ? --year : year)
                     }}
                   ></span>
                 }
@@ -370,8 +370,8 @@ function DatePicker(props) {
                     className="comp__date-picker__date-range-btn right-month-btn"
                     onClick={() => {
                       let sholdYearUp = month + 1 === 12
-                      setMonth(sholdYearUp ? 0 : ++month)
-                      setYear(sholdYearUp? ++year : year)
+                      setMonth(month => sholdYearUp ? 0 : ++month)
+                      setYear(year => sholdYearUp? ++year : year)
                     }}
                   ></span>
                 }
@@ -381,7 +381,7 @@ function DatePicker(props) {
                   <span
                     className="comp__date-picker__date-range-btn right-year-btn"
                     onClick={() => {
-                      setYear(++year)
+                      setYear(year => ++year)
                       setBeforeYear(beforeYear + 10)
                     }}
                   ></span>
