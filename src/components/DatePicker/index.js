@@ -310,7 +310,7 @@ function DatePicker(props) {
                       key={month}
                       className="comp__date-picker__ten-years-item"
                       onClick={() => {
-                        setMonth(month => month - 1)
+                        setMonth(month - 1)
                         setShowMonthBtn(false)
                       }}
                     >{month + '月'}</span>
