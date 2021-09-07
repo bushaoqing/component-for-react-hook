@@ -62,6 +62,9 @@ function Path(props) {
       {
         polyline ?
         <polyline // 折线
+          onClick={props.onClick}
+          onMouseEnter={() => setIsHover(true)}
+          onMouseLeave={() => setIsHover(false)}
           markerEnd='url(#markertriangle)' 
           points={`${position.x1},${position.y1} ${position.x2},${position.y2} ${position.x3},${position.y3} ${position.x4},${position.y4}`}
           style={{
