@@ -1,6 +1,6 @@
 ### 1、按钮案例图片
 ```javascript
-<SdwButton 
+<Button 
   type="submit"
   iconClass=""
   text="确定"
