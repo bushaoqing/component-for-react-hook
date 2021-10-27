@@ -21,6 +21,7 @@
   outline: none;
   user-select: none;
   overflow: overlay;
+  z-index: 99;
 }
 
 /* 每个div的上下左右4个点 */

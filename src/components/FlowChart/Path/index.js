@@ -45,7 +45,11 @@ function Path(props) {
   }
 
   return (
-    <svg style={{ position: 'absolute', overflow: 'visible', width: '1px', height: '1px' }}>
+    // 第一版：这里浏览器缩放：线条不等比例缩放（因为设置了宽高）
+    // <svg style={{ position: 'absolute', overflow: 'visible', width: '1px', height: '1px' }}>
+
+    // 第二版：解决了浏览器缩放问题，但是会在画布左上角占据一个位置，导致左上角的位置无法使用
+    <svg style={{ zIndex: 0, overflow: 'visible', position: 'absolute', border: '1px solid pink' }}>
       <defs>
         <marker 
           id="markertriangle" 
