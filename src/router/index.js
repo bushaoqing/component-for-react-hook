@@ -14,6 +14,7 @@ import PopoverDemo from "../pages/PopoverDemo"
 import TableDemo from "../pages/TableDemo"
 import SvgDemo from "../pages/SvgDemo"
 import TreeDemo from "../pages/TreeDemo"
+import Pagination from "../pages/Pagination"
 
 // 侧边菜单栏
 const RouteMap = [
@@ -81,6 +82,10 @@ const RouteMap = [
         name: 'TreeDemo案例',
         path: '/TreeDemo',
         component: TreeDemo
+    }, {
+        name: 'Pagination案例',
+        path: '/Pagination',
+        component: Pagination
     }
 ]
 

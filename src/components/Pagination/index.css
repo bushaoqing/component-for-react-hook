@@ -1,0 +1,49 @@
+.comp__pagination__wrap {
+  display: flex;
+  flex-direction: row-reverse;
+  line-height: 28px;
+}
+
+.comp__pagination__wrap .comp__pagination__main {
+  font-size: 14px;
+}
+
+.comp__pagination__wrap .comp__pagination__main input {
+  width: 40px;
+  height: 28px;
+  line-height: 28px;
+  border: 1px solid #eee;
+  outline: none;
+  padding: 0 4px;
+  box-sizing: border-box;
+}
+
+.comp__pagination__wrap .comp__pagination__main .total {
+  margin-right: 18px;
+  color: #999;
+}
+
+.comp__pagination__wrap .comp__pagination__main .items {
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 2px 8px;
+  margin-right: 8px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.comp__pagination__wrap .comp__pagination__main .more-btn {
+  margin-right: 8px;
+  /* cursor: pointer; */
+}
+
+.comp__pagination__wrap .comp__pagination__main .select {
+  width: 100px;
+  line-height: 28px;
+  height: 28px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  outline: none;
+  padding: 0 4px;
+  box-sizing: border-box;
+}

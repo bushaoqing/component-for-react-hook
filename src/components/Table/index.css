@@ -36,13 +36,13 @@
 }
 
 .comp__table-wrap tbody tr:nth-of-type(odd) {
-  /* background-color: #fbfbfb; */
-  background-color: greenyellow;
+  background-color: #fbfbfb;
+  /* background-color: greenyellow; */
 }
 
 .comp__table-wrap tbody tr:nth-of-type(even) {
-  /* background-color: #fff; */
-  background-color: yellow;
+  background-color: #fff;
+  /* background-color: yellow; */
 }
 
 .comp__table-wrap .stickyed {
