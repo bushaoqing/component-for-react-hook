@@ -35,10 +35,13 @@ function DatePicker(props) {
       let maxVal = value[1] || null
 
       if (minVal && typeof minVal === 'string' && maxVal && typeof maxVal === 'string') {
+        let minList = minVal.split('-')
         let list = maxVal.split('-')
 
+        const sameYearAndSameMonth = minList[0] === list[0] && minList[1] === list[1]
+        const monthNum = sameYearAndSameMonth ? 1 : 2
         setYear(list[1] == 1 ? list[0] - 1 : +list[0])
-        setMonth((list[1] - 2 + 12) % 12)
+        setMonth((list[1] - monthNum + 12) % 12)
         setDataRange([
           minVal.split('-'),
           list
