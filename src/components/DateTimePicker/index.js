@@ -28,7 +28,11 @@ function DateTimePicker(props) {
 
   useEffect(reSetDateTime, [originDateTime])
 
-  useEffect(onParentChangeValue, [showTimePickerPage])
+  useEffect(() => {
+    if(showTimePickerPage && !!props.value) {
+      reSetDateTime()
+    }
+  }, [showTimePickerPage])
 
   function gloabalClick() {
     setShowTimePickerPage(false)
@@ -85,6 +89,11 @@ function DateTimePicker(props) {
     setOriginDateTime(curDateTime)
 
     props.changeValue(curDateTime)
+  }
+
+  function onSure() {
+    onParentChangeValue()
+    setShowTimePickerPage(false)
   }
 
   let {
@@ -163,7 +172,7 @@ function DateTimePicker(props) {
           <div className="comp__date-time-picker-page__footer">
             <span 
               className="right"
-              onClick={() => setShowTimePickerPage(false)}
+              onClick={onSure}
             >确定</span>
           </div>
         </div>
