@@ -84,8 +84,6 @@ function DatePicker(props) {
         arr.push(day.value)
       }
 
-      setYear(+arr[0][0])
-      setMonth(Number(arr[0][1]) - 1)
       setDataRange(arr)
       setShowDatePickePage(arr.length !== 2)
 
